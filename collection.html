@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>園區收藏｜植播電台 Zhibodiantai</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="images/wow-forest-logo.jpeg">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand"><img src="images/wow-forest-logo.jpeg" alt="">植播電台<span class="brand-sub">Zhibodiantai</span></a>
+    <div class="nav-links">
+      <a href="index.html">關於我</a>
+      <a href="collection.html" class="active">園區收藏</a>
+      <a href="shop.html">販售目錄</a>
+      <a href="contact.html">聯絡資訊</a>
+    </div>
+    <button id="navToggle" class="nav-toggle" aria-label="開啟選單">☰</button>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="page-head">
+    <div class="eyebrow">Mother Plants & Notable Specimens</div>
+    <h1>園區收藏</h1>
+    <p class="sub">這裡展示的母本與表現優秀的個體皆為非賣品，購買請參考販售目錄。</p>
+  </header>
+
+  <div class="grid" id="grid"></div>
+</div>
+
+<footer class="site-footer">© 植播電台 Zhibodiantai · 個人栽培紀錄與販售</footer>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3 id="modalTitle"></h3>
+      <button id="modalClose">關閉 ✕</button>
+    </div>
+    <div class="modal-photos" id="modalPhotos"></div>
+    <div class="modal-note" id="modalNote"></div>
+  </div>
+</div>
+
+<script src="js/common.js"></script>
+<script>
+// ------------------------------------------------------------------
+// 園區收藏資料：每一筆代表一株母本或重點收藏個體
+// - label：分類標籤，例如 "母本"、"重點收藏"、"型態參考"，會顯示成小標籤
+// - photos：可放多張照片，例如 ["images/mother-m1-1.jpg","images/mother-m1-2.jpg"]
+// - note：介紹文字，可以寫來源、型態特徵、為什麼留種等
+// ------------------------------------------------------------------
+const collection = [
+  {
+    id:"M-01",
+    name:"RPNMP01-1（willinckii moonlight* veitchii HFG sporeling）",
+    label:"母本",
+    color:"#4c5f3d",
+    photos:[ "images/RPNMP01-1.jpeg", "images/RPNMP01-2.jpeg", "images/RPNMP01-3.jpeg" ],
+    note:"月光與HFG雜交個體，雙親表現非常平衡，高尖冠加上多重分岔手，生長速度快，環境耐受強，是適合栽培的品種"
+  },
+  {
+    id:"M-02",
+    name:"深綠龍*野銀 HGVW01（hillii dragon* veitchii wild sporeling）",
+    label:"母本",
+    color:"#5a6e46",
+    photos:["images/HGVW-1.jpg", "images/HGVW-2.jpg"],
+    note:"園藝種深綠“龍”與野銀的雜交種，非常少見，有尖刺冠及寬手特徵，目前為亞成型態"
+  },
+  {
+    id:"M-03",
+    name:"Daedala（迪達拉）",
+    label:"母本",
+    color:"#3f5232",
+    photos:[ "images/Daedala-1.jpeg" ],
+    note:"（alcicrone ver madagascar variant sporeling, 來自Nook的孢子苗，具有捲曲特徵，孢子葉非常寬大，手指數量也很驚人，宛如精緻的工藝品）"
+  },
+  {
+    id:"M-04",
+    name:"Kakuzu（角都）",
+    label:"母本",
+    color:"#6b7c52",
+    photos:[ "images/Kakuzu-1.jpeg", "images/Kakuzu-2.jpeg" ],
+    note:"SSFOONG*bf sp white* hillii Mio* Silver Vevlet sporeling，4品混播，有巨大葉片，黑脈紋路，有鱗片狀的表面，短小的營養葉"
+  },
+  {
+    id:"C-01",
+    name:"個體 05（填名稱）",
+    label:"重點收藏",
+    color:"#354a2b",
+    photos:[],
+    note:"（介紹文字）"
+  },
+  {
+    id:"C-02",
+    name:"個體 06（填名稱）",
+    label:"重點收藏",
+    color:"#4a5e3a",
+    photos:[],
+    note:"（介紹文字）"
+  },
+  {
+    id:"C-03",
+    name:"個體 07（填名稱）",
+    label:"重點收藏",
+    color:"#576b44",
+    photos:[],
+    note:"（介紹文字）"
+  },
+  {
+    id:"C-04",
+    name:"個體 08（填名稱）",
+    label:"重點收藏",
+    color:"#495c39",
+    photos:[],
+    note:"（介紹文字）"
+  },
+];
+
+function galleryHTML(item, idx){
+  const photos = item.photos && item.photos.length ? item.photos : [];
+  if(photos.length === 0) return frondSVG(item.color);
+  const nav = photos.length > 1 ? `
+    <div class="nav prev" data-nav="prev" data-id="${item.id}">‹</div>
+    <div class="nav next" data-nav="next" data-id="${item.id}">›</div>
+    <div class="dots">${photos.map((_,i)=>`<span class="${i===idx?'active':''}"></span>`).join('')}</div>
+  ` : '';
+  return `<img src="${photos[idx]}" alt="${item.name}" loading="lazy">${nav}`;
+}
+
+let galleryIndex = {};
+const grid = document.getElementById('grid');
+const lightbox = initLightbox();
+
+function render(){
+  grid.innerHTML = collection.map(item => `
+    <div class="card">
+      <div class="accession">NO. ${item.id}</div>
+      <div class="frond">${galleryHTML(item, galleryIndex[item.id] || 0)}</div>
+      <div class="body">
+        <h3>${item.name}${item.label ? `<span class="type-tag">${item.label}</span>` : ''}</h3>
+        <div class="collection-note" style="padding:0;flex:1;">${item.note || ''}</div>
+      </div>
+    </div>
+  `).join('');
+
+  grid.querySelectorAll('[data-nav]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const item = collection.find(i=>i.id===btn.dataset.id);
+      const len = item.photos.length;
+      const cur = galleryIndex[item.id] || 0;
+      galleryIndex[item.id] = btn.dataset.nav === 'next' ? (cur+1)%len : (cur-1+len)%len;
+      render();
+    });
+  });
+
+  grid.querySelectorAll('.frond img').forEach(img=>{
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', ()=>{
+      const card = img.closest('.card');
+      const idx = [...grid.children].indexOf(card);
+      lightbox.open(collection[idx]);
+    });
+  });
+}
+
+render();
+</script>
+
+</body>
+</html>
