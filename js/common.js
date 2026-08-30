@@ -38,8 +38,8 @@ function initLightbox(){
   function open(data){
     title.textContent = data.name || data.label || '參考資料';
     photosEl.innerHTML = (data.photos && data.photos.length)
-      ? data.photos.map(src => `<img src="${src}" alt="">`).join('')
-      : `<div style="color:var(--moss);font-size:12.5px;">尚未上傳照片</div>`;
+      ? data.photos.map(src => `<img src="${src}" alt="${data.name || data.label || '鹿角蕨'} 鹿角蕨孢子苗">`).join('')
+  : `<div style="color:var(--moss);font-size:12.5px;">尚未上傳照片</div>`;
     noteEl.textContent = data.note || '';
     overlay.classList.add('open');
   }
