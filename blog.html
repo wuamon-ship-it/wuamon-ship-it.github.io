@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head><meta name="description" content="植播電台 Zhibodiantai 文章列表，鹿角蕨型態觀察、栽培筆記與育種紀錄不定期更新。">
+  <meta property="og:title" content="文章｜植播電台 Zhibodiantai">
+<meta property="og:description" content="鹿角蕨型態觀察、栽培筆記與育種紀錄，不定期更新。">
+<meta property="og:image" content="https://wuamon-ship-it.github.io/images/wow-forest-logo.jpeg">
+<meta property="og:url" content="https://wuamon-ship-it.github.io/blog.html">
+<meta property="og:type" content="website">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文章｜植播電台 Zhibodiantai</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="images/wow-forest-logo.jpeg">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand"><img src="images/wow-forest-logo.jpeg" alt="植播電台 Zhibodiantai 品牌 logo">植播電台<span class="brand-sub">Zhibodiantai</span></a>
+    <div class="nav-links">
+      <a href="index.html">關於我</a>
+      <a href="collection.html">園區收藏</a>
+      <a href="shop.html">販售目錄</a>
+      <a href="care.html">栽培知識</a>
+      <a href="blog.html" class="active">文章</a>
+      <a href="contact.html">聯絡資訊</a>
+    </div>
+    <button id="navToggle" class="nav-toggle" aria-label="開啟選單">☰</button>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="page-head">
+    <div class="eyebrow">Notes & Observations</div>
+    <h1>文章</h1>
+    <p class="sub">不定期分享型態觀察、栽培筆記與育種紀錄。</p>
+  </header>
+
+  <div class="grid" id="grid"></div>
+</div>
+
+<footer class="site-footer">© 植播電台 Zhibodiantai · 個人栽培紀錄與販售</footer>
+
+<script src="js/common.js"></script>
+<script>
+// ------------------------------------------------------------------
+// 文章清單：每寫一篇新文章，先照 post-template.html 複製改好，
+// 存到 posts 資料夾（例如 posts/2026-09-上板教學.html），
+// 再回來這裡新增一筆物件即可，新文章建議加在陣列最上面（最新的在前面）。
+// - title：文章標題
+// - date：發布日期，顯示用
+// - excerpt：摘要，一兩句話，會顯示在卡片上
+// - cover：封面圖片路徑，沒有的話可以留空字串 ""
+// - url：文章檔案的路徑
+// ------------------------------------------------------------------
+const posts = [
+  {
+    title: "用泥炭土搶救鹿角蕨的方法",
+    date: "2026-09-04",
+    excerpt: "泥炭土竟然也可以種鹿角蕨？而且還是在鹿角蕨最脆弱的時候？",
+    cover: "images/cv_at1.jpeg",
+    url: "posts/post-example.html"
+  },
+];
+
+const grid = document.getElementById('grid');
+
+function render(){
+  grid.innerHTML = posts.map(p => `
+    <a class="card" href="${p.url}" style="text-decoration:none;color:inherit;display:block;">
+      <div class="frond">${p.cover ? `<img src="${p.cover}" alt="${p.title}" loading="lazy">` : frondSVG('#5a6e46')}</div>
+      <div class="body">
+        <h3>${p.title}</h3>
+        <div class="collection-note" style="padding:0;flex:1;">
+          <div style="font-size:12px;opacity:.7;margin-bottom:6px;">${p.date}</div>
+          ${p.excerpt}
+        </div>
+      </div>
+    </a>
+  `).join('');
+}
+
+render();
+</script>
+
+</body>
+</html>
