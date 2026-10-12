@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>植蕨生活｜國姓、埔里鹿角蕨與民宿 ‧ 沃森 wow forest</title>
+<meta name="description" content="來自南投國姓、埔里地區的鹿角蕨收藏與育種玩家，販售自產側芽與孢子苗，並提供國際物流。">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap">
+<style>
+:root{
+  --green:#1f4d3b; --green-d:#163a2c; --green-l:#e8f0ec; --leaf:#4f7f66;
+  --ink:#1c2420; --muted:#5b6a62; --line:#d5dfd9; --bg:#fff;
+  --serif:"Noto Serif TC","Songti TC",serif; --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.75}
+a{color:var(--green)}
+:focus-visible{outline:3px solid var(--leaf);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--serif);color:var(--green);line-height:1.35;margin:0}
+
+.topbar{border-bottom:1px solid var(--line);font-size:14px}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:10px;padding-bottom:10px}
+.topbar a{text-decoration:none;color:var(--muted)}
+
+/* hero */
+.hero{padding:48px 0 40px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.brand{display:flex;align-items:center;gap:18px;margin-bottom:22px}
+.brand img{width:92px;height:92px;object-fit:contain}
+.brand h1{font-size:clamp(26px,4vw,38px)}
+.brand small{display:block;color:var(--muted);font-size:14px;font-family:var(--sans);font-weight:400;margin-top:4px}
+.hero p{margin:0 0 14px;max-width:34em}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.links a{border:1.5px solid var(--green);padding:8px 16px;border-radius:999px;text-decoration:none;font-weight:500;font-size:15px}
+.links a:hover{background:var(--green);color:#fff}
+.links a.main{background:var(--green);color:#fff}
+.links a.btnlink{border:1.5px solid var(--green);padding:8px 16px;border-radius:999px;text-decoration:none;font-weight:500;font-size:15px}
+.links a.main:hover{background:var(--green-d)}
+.photo{aspect-ratio:4/5;background:var(--green-l);border-radius:4px 80px 4px 4px;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* stay */
+.stay{padding:36px 0;border-bottom:1px solid var(--line)}
+.stay h2{font-size:24px;margin-bottom:6px}
+.stay p{margin:0 0 16px}
+.stay-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:14px}
+.stay-grid>div{border:1.5px solid var(--green);padding:14px 18px;display:flex;flex-direction:column;gap:2px}
+.stay-grid span{color:var(--muted);font-size:14px}
+.stay-grid b{font-family:var(--serif);font-size:26px;color:var(--green)}
+.stay-grid small{color:var(--muted)}
+.stay-grid .addr a{font-weight:500}
+.book{background:var(--green-l);padding:22px;margin-top:8px}
+.book h3{font-size:19px;margin-bottom:6px}
+.book form{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0 8px}
+.book label{display:flex;flex-direction:column;gap:4px;font-size:14px;color:var(--muted)}
+.book .wide{grid-column:1/-1}
+.book input{font:inherit;padding:9px 10px;border:1px solid var(--line);border-radius:3px;color:var(--ink);background:#fff}
+.book textarea{margin-top:10px}
+@media(max-width:760px){.book form{grid-template-columns:1fr 1fr}}
+/* notice */
+.notice{background:var(--green);color:#fff;padding:34px 0}
+.notice h2{color:#fff;font-size:21px;margin-bottom:12px}
+.notice ul{margin:0;padding-left:1.2em}
+.notice li{margin:6px 0}
+.notice strong{color:#cfe6d9}
+
+/* shop */
+.shop{padding:48px 0 120px}
+.shop h2{font-size:26px;margin-bottom:6px}
+.shop .sub{color:var(--muted);margin:0 0 26px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px}
+.card{border:1px solid var(--line);display:flex;flex-direction:column}
+.card .img{aspect-ratio:1;background:var(--green-l);display:grid;place-items:center;color:var(--leaf);font-size:14px;position:relative}
+.card .img img{width:100%;height:100%;object-fit:cover;display:block}
+.thumbs{display:flex;gap:6px;padding:8px 16px 0}
+.thumbs button{width:44px;height:44px;padding:0;border:2px solid transparent;background:none;cursor:pointer;opacity:.7}
+.thumbs button[aria-current="true"]{border-color:var(--green);opacity:1}
+.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.tag{position:absolute;left:10px;top:10px;background:var(--green);color:#fff;font-size:12px;padding:2px 10px;border-radius:999px}
+.card .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{font-size:17px}
+.card .desc{color:var(--muted);font-size:14px;margin:0;flex:1}
+.price{font-weight:700;font-size:18px}
+.btn{font:inherit;cursor:pointer;border:0;background:var(--green);color:#fff;padding:10px 14px;border-radius:3px;font-weight:500}
+.btn:hover{background:var(--green-d)}
+.btn:disabled{background:#b7c4bd;cursor:not-allowed}
+.btn.ghost{background:#fff;color:var(--green);border:1.5px solid var(--green)}
+.card.sold{opacity:.65}
+
+/* cart */
+.bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:2px solid var(--green);padding:12px 20px;z-index:20}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:0}
+.drawer{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:30;display:none;justify-content:flex-end}
+.drawer.open{display:flex}
+.panel{background:#fff;width:min(460px,100%);height:100%;overflow:auto;padding:24px;display:flex;flex-direction:column;gap:14px}
+.panel h2{font-size:22px}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:center;border-bottom:1px solid var(--line);padding:8px 0;font-size:15px}
+.qty{display:inline-flex;align-items:center;gap:8px}
+.qty button{width:28px;height:28px;border:1px solid var(--green);background:#fff;color:var(--green);cursor:pointer;border-radius:3px;font-size:16px}
+.warn{background:var(--green-l);border-left:4px solid var(--green);padding:10px 14px;font-size:14px}
+textarea{width:100%;min-height:200px;font:inherit;font-size:14px;border:1px solid var(--line);padding:10px;border-radius:3px;resize:vertical}
+.note{font-size:13px;color:var(--muted);margin:0}
+footer{border-top:1px solid var(--line);padding:26px 0 90px;color:var(--muted);font-size:14px}
+
+@media(max-width:760px){
+  .hero .wrap{grid-template-columns:1fr}
+  .photo{order:-1;aspect-ratio:3/2;border-radius:4px 48px 4px 4px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <a href="index.html">← 回到 沃森 wow forest</a>
+  <span style="color:var(--muted)">客座夥伴專區</span>
+</div></div>
+
+<!-- 品牌介紹 -->
+<header class="hero"><div class="wrap">
+  <div>
+    <div class="brand">
+      <img src="assets/partner_1_logo.jpg" alt="植蕨生活 Logo：戴著鹿角的安全帽">
+      <h1>植蕨生活<small>台灣 ‧ 南投國姓、埔里地區　鹿角蕨收藏與育種</small></h1>
+    </div>
+    <p>來自台灣的鹿角蕨收藏家與育種玩家，以自家栽培的鹿角蕨側芽與孢子苗為主。</p>
+    <p>他同時在國姓、埔里地區經營民宿「植蕨行旅」：遠道而來的朋友可以有充裕的時間慢慢挑選，也能住進被鹿角蕨環繞的空間，把喜歡的植物看個夠。海外的朋友，另提供國際物流服務。</p>
+    <div class="links">
+      <a class="main" id="lnkFB" href="#" target="_blank" rel="noopener">民宿介紹（Facebook）</a>
+      <a id="lnkIG" href="#" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+  <div class="photo"><img src="assets/partner_hostel.jpg" alt="民宿內被鹿角蕨環繞的空間"></div>
+</div></header>
+
+<!-- 民宿資訊與訂房 -->
+<section class="stay" id="stay"><div class="wrap">
+  <h2>民宿住宿｜植蕨行旅</h2>
+  <p>在被鹿角蕨環繞的空間裡住下來，慢慢看、慢慢挑。</p>
+  <div class="stay-grid">
+    <div class="rate"><span>平日</span><b>NT$1,800</b><small>／ 晚（2 人）</small></div>
+    <div class="rate"><span>假日</span><b>NT$3,000</b><small>／ 晚（2 人）</small></div>
+    <div class="addr"><span>地址</span>
+      <a href="https://www.google.com/maps/search/?api=1&query=%E5%8D%97%E6%8A%95%E7%B8%A3%E5%9C%8B%E5%A7%93%E9%84%89%E4%B8%AD%E6%AD%A3%E8%B7%AF%E5%9B%9B%E6%AE%B5153-2%E8%99%9F" target="_blank" rel="noopener">南投縣國姓鄉中正路四段153-2號</a></div>
+  </div>
+
+  <div class="book">
+    <h3>使用本頁訂房，每晚折 NT$<span id="stayAmt">50</span></h3>
+    <p class="note">填寫後產生訂房訊息，折扣碼 <b id="stayCode"></b> 會自動帶入。訊息請<b>直接傳給夥伴</b>，房況、實際金額與付款方式由夥伴確認，訂房與下方植物購買分開處理。</p>
+    <form id="bk">
+      <label>入住日<input type="date" id="bkIn" required></label>
+      <label>退房日<input type="date" id="bkOut" required></label>
+      <label>人數<input type="number" id="bkPpl" min="1" value="2" required></label>
+      <label>姓名<input type="text" id="bkName" required autocomplete="name"></label>
+      <label class="wide">聯絡方式（LINE／Instagram／電話）<input type="text" id="bkContact" required></label>
+      <label class="wide">備註（選填）<input type="text" id="bkNote"></label>
+      <div class="wide"><button class="btn" type="submit">產生訂房訊息</button></div>
+    </form>
+    <p class="note" id="bkErr" role="alert" style="color:#a33"></p>
+    <div id="bkOutBox" hidden>
+      <textarea id="bkMsg" readonly></textarea>
+      <div class="links"><button class="btn ghost" id="bkCopy" type="button">複製訊息</button><span id="stayContact" style="display:contents"></span></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 結帳說明 -->
+<section class="notice" id="howto"><div class="wrap">
+  <h2>購買前請先閱讀：本區商品由夥伴自行出貨與結帳</h2>
+  <ul>
+    <li>本區商品由<strong>夥伴本人</strong>負責報價、收款、包裝與出貨，<strong>無法與沃森 wow forest 的商品合併結帳或合併運費</strong>。</li>
+    <li>在此選好商品後，按「產生訂單訊息」，把訊息<strong>直接傳給夥伴</strong>（Instagram／Facebook／LINE），後續付款與寄送方式由夥伴與你確認。</li>
+    <li>訊息中的「介紹代碼」代表你是由沃森 wow forest 介紹而來，請保留，不需要另外說明。</li>
+    <li>商品品質、現貨狀態與售後問題，由夥伴負責回覆。</li>
+    <li>海外訂購請在訊息中註明寄送國家，運費與可寄送範圍由夥伴確認後報價。</li>
+  </ul>
+</div></section>
+
+<!-- 商品 -->
+<main class="shop" id="shop"><div class="wrap">
+  <h2>夥伴的鹿角蕨</h2>
+  <p class="sub">價格皆為新台幣，實際數量以夥伴確認為準。</p>
+  <div class="grid" id="grid"></div>
+</div></main>
+
+<footer><div class="wrap">
+  這是由沃森 wow forest 介紹的客座專區。商品資料由沃森 wow forest 代為上架維護，交易由夥伴負責。
+</div></footer>
+
+<!-- 採集清單 -->
+<div class="bar"><div class="wrap">
+  <span id="barText">採集清單：0 件</span>
+  <button class="btn" id="openCart">查看清單</button>
+</div></div>
+
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="採集清單">
+  <div class="panel">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h2>採集清單</h2>
+      <button class="btn ghost" id="closeCart">關閉</button>
+    </div>
+    <div id="rows"></div>
+    <div class="row" style="font-weight:700"><span>合計</span><span id="total">NT$0</span></div>
+    <div class="warn">此清單只傳給<b>夥伴</b>，不會和沃森 wow forest 的訂單一起結帳。</div>
+    <button class="btn" id="gen">產生訂單訊息</button>
+    <textarea id="msg" readonly placeholder="按上方按鈕後，訊息會出現在這裡"></textarea>
+    <button class="btn ghost" id="copy">複製訊息</button>
+    <p class="note">複製後，請貼到夥伴的 Instagram／Facebook／LINE 私訊。</p>
+    <div class="links" id="contact"></div>
+  </div>
+</div>
+
+<script>
+/* ===== 設定區：只要改這裡 ===== */
+const CONFIG = {
+  partnerName: "植蕨生活",
+  refCode: "WOW-REF",                 // 介紹代碼（可改成你想追蹤的代碼）
+  referrer: "沃森 wow forest",
+  ig: "https://www.instagram.com/whoplant2022/",
+  fb: "https://www.facebook.com/share/r/1CxMBVtRw5/?mibextid=wwXIfr",  // 民宿 Facebook 介紹
+  stay: {name:"植蕨行旅", code:"WOW50", amount:50, weekday:1800, weekend:3000, weekendDays:[5,6]}, // 民宿：折扣每晚折抵；週五、週六過夜為假日（0=週日…6=週六）
+  contact: [                           // 結帳時給客人的聯絡方式
+    {label:"Instagram 私訊", url:"https://www.instagram.com/whoplant2022/"}
+  ]
+};
+
+/* ===== 商品資料（之後可改成讀 Google 試算表）=====
+   status: "live" 上架 / "sold" 售完；tag 為商品類型標籤 */
+const PRODUCTS = [
+  {id:"G001", name:"白法螺", tag:"孢子苗", price:500,  desc:"由植蕨生活挑選的優質孢子苗", imgs:["assets/Shanka_M_1.jpg", "assets/Shanka_S_1.jpg"], status:"live"},
+  {id:"G002", name:"捲捲鹿", tag:"孢子苗", price:300, desc:"由植蕨生活挑選的優質孢子苗", imgs:["assets/FSQ_M_1.jpg", "assets/FSQ_S_1.jpg"], status:"live"},
+  {id:"G003", name:"AR埔里3號 AR puli #3", tag:"孢子苗", price:700, desc:"由植蕨生活挑選的優質孢子苗。", imgs:["assets/ARpuli_3_M_1.jpg","assets/ARpuli_3_S_1.jpg"], status:"live"}
+];
+/* 照片：imgs 放多張，例如 imgs:["assets/g001-1.jpg","assets/g001-2.jpg"]，第一張為主圖，多張時卡片下方會出現縮圖可切換 */
+
+/* ===== 以下不用改 ===== */
+const $ = id => document.getElementById(id);
+const cart = {};   // id -> qty
+const fmt = n => "NT$" + n.toLocaleString("en-US");
+
+$("lnkIG").href = CONFIG.ig; $("lnkFB").href = CONFIG.fb;
+$("stayCode").textContent = CONFIG.stay.code; $("stayAmt").textContent = CONFIG.stay.amount;
+$("stayContact").innerHTML = CONFIG.contact.map(c=>`<a class="btnlink" href="${c.url}" target="_blank" rel="noopener">${c.label}</a>`).join("");
+$("contact").innerHTML = CONFIG.contact.map(c=>`<a href="${c.url}" target="_blank" rel="noopener">${c.label}</a>`).join("");
+
+function renderGrid(){
+  $("grid").innerHTML = PRODUCTS.filter(p=>p.status!=="draft").map(p=>{
+    const sold = p.status==="sold";
+    return `<article class="card ${sold?"sold":""}">
+      <div class="img">${p.imgs[0]?`<img src="${p.imgs[0]}" alt="${p.name}" loading="lazy">`:"照片準備中"}<span class="tag">${sold?"已售完":p.tag}</span></div>
+      ${p.imgs.length>1?`<div class="thumbs">${p.imgs.map((u,i)=>`<button data-th="${p.id}|${i}" aria-label="第${i+1}張照片" aria-current="${i===0}"><img src="${u}" alt=""></button>`).join("")}</div>`:""}
+      <div class="body"><h3>${p.name}</h3><p class="desc">${p.desc}</p>
+      <div class="price">${fmt(p.price)}</div>
+      <button class="btn" data-add="${p.id}" ${sold?"disabled":""}>${sold?"已售完":"加入採集清單"}</button></div>
+    </article>`}).join("");
+}
+function count(){return Object.values(cart).reduce((a,b)=>a+b,0)}
+function total(){return Object.entries(cart).reduce((s,[id,q])=>s+q*PRODUCTS.find(p=>p.id===id).price,0)}
+function renderCart(){
+  $("barText").textContent = `採集清單：${count()} 件｜${fmt(total())}`;
+  $("total").textContent = fmt(total());
+  const ids = Object.keys(cart);
+  $("rows").innerHTML = ids.length ? ids.map(id=>{
+    const p = PRODUCTS.find(x=>x.id===id);
+    return `<div class="row"><span>${p.name}<br><small>${fmt(p.price)}</small></span>
+      <span class="qty"><button data-dec="${id}" aria-label="減少">−</button>${cart[id]}<button data-inc="${id}" aria-label="增加">＋</button></span></div>`;
+  }).join("") : `<p class="note">還沒有選任何商品。</p>`;
+}
+function buildMsg(){
+  const lines = Object.keys(cart).map(id=>{
+    const p = PRODUCTS.find(x=>x.id===id);
+    return `‧${p.name}（${p.id}）x${cart[id]}＝${fmt(p.price*cart[id])}`;
+  });
+  return `【客座訂單】${CONFIG.partnerName}\n`+
+    `介紹代碼：${CONFIG.refCode}（由 ${CONFIG.referrer} 介紹）\n`+
+    `－－－－－－－－\n${lines.join("\n")}\n－－－－－－－－\n`+
+    `商品合計：${fmt(total())}（未含運費）\n`+
+    `寄送地區／國家：\n姓名：\n聯絡方式：\n備註：`;
+}
+document.addEventListener("click",e=>{
+  const t = e.target;
+  const th = t.closest("[data-th]");
+  if(th){
+    const [id,i] = th.dataset.th.split("|"), card = th.closest(".card");
+    card.querySelector(".img img").src = PRODUCTS.find(p=>p.id===id).imgs[+i];
+    card.querySelectorAll("[data-th]").forEach(b=>b.setAttribute("aria-current", b===th));
+  }
+  if(t.dataset.add){cart[t.dataset.add]=(cart[t.dataset.add]||0)+1;renderCart();}
+  if(t.dataset.inc){cart[t.dataset.inc]++;renderCart();}
+  if(t.dataset.dec){if(--cart[t.dataset.dec]<=0)delete cart[t.dataset.dec];renderCart();}
+});
+$("openCart").onclick = ()=>{$("drawer").classList.add("open")};
+$("closeCart").onclick = ()=>{$("drawer").classList.remove("open")};
+$("drawer").addEventListener("click",e=>{if(e.target.id==="drawer")$("drawer").classList.remove("open")});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")$("drawer").classList.remove("open")});
+$("gen").onclick = ()=>{
+  if(!count()){$("msg").value="請先加入商品。";return;}
+  $("msg").value = buildMsg();
+};
+$("copy").onclick = async ()=>{
+  const m = $("msg"); if(!m.value||!count()) return;
+  try{await navigator.clipboard.writeText(m.value)}catch(_){m.select();document.execCommand("copy")}
+  $("copy").textContent = "已複製"; setTimeout(()=>$("copy").textContent="複製訊息",1800);
+};
+/* ===== 民宿訂房 ===== */
+const today = new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10);
+$("bkIn").min = today; $("bkOut").min = today;
+$("bk").addEventListener("submit",e=>{
+  e.preventDefault();
+  const inD=$("bkIn").value, outD=$("bkOut").value, err=$("bkErr");
+  const nights = Math.round((new Date(outD)-new Date(inD))/864e5);
+  if(!(nights>0)){err.textContent="退房日必須晚於入住日。";$("bkOutBox").hidden=true;return;}
+  err.textContent="";
+  const st = CONFIG.stay; let wd=0, we=0;
+  const [y,m,d] = inD.split("-").map(Number);
+  for(let i=0;i<nights;i++){ st.weekendDays.includes(new Date(y,m-1,d+i).getDay()) ? we++ : wd++; }
+  const gross = wd*st.weekday + we*st.weekend, off = st.amount*nights;
+  $("bkMsg").value =
+`【民宿訂房】${CONFIG.stay.name}（${CONFIG.partnerName}）
+介紹代碼：${CONFIG.refCode}（由 ${CONFIG.referrer} 介紹）
+折扣碼：${st.code}（使用本頁訂房，每晚折 ${fmt(st.amount)}，${nights} 晚共折 ${fmt(off)}）
+－－－－－－－－
+入住：${inD}
+退房：${outD}（共 ${nights} 晚）
+人數：${$("bkPpl").value} 人
+姓名：${$("bkName").value}
+聯絡方式：${$("bkContact").value}
+備註：${$("bkNote").value||"無"}
+－－－－－－－－
+預估金額（以 2 人計）：
+平日 ${wd} 晚 x ${fmt(st.weekday)}＋假日 ${we} 晚 x ${fmt(st.weekend)}＝${fmt(gross)}
+折扣 －${fmt(off)}
+預估應付：${fmt(gross-off)}
+（週五、週六過夜為假日，其餘為平日。實際金額與房況請夥伴確認。）`;
+  $("bkOutBox").hidden=false;
+});
+$("bkCopy").onclick = async ()=>{
+  const m=$("bkMsg");
+  try{await navigator.clipboard.writeText(m.value)}catch(_){m.select();document.execCommand("copy")}
+  $("bkCopy").textContent="已複製"; setTimeout(()=>$("bkCopy").textContent="複製訊息",1800);
+};
+renderGrid(); renderCart();
+</script>
+</body>
+</html>
