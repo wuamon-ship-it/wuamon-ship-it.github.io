@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>植蕨生活｜國姓、埔里鹿角蕨與民宿 ‧ 沃森 wow forest</title>
+<meta name="description" content="來自南投國姓、埔里地區的鹿角蕨收藏與育種玩家，販售自產側芽與孢子苗，並提供國際物流。">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap">
+<style>
+:root{
+  --green:#1f4d3b; --green-d:#163a2c; --green-l:#e8f0ec; --leaf:#4f7f66;
+  --ink:#1c2420; --muted:#5b6a62; --line:#d5dfd9; --bg:#fff;
+  --serif:"Noto Serif TC","Songti TC",serif; --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+img{max-width:100%}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.75}
+a{color:var(--green)}
+:focus-visible{outline:3px solid var(--leaf);outline-offset:2px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--serif);color:var(--green);line-height:1.35;margin:0}
+
+.topbar{border-bottom:1px solid var(--line);font-size:14px}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:10px;padding-bottom:10px}
+.topbar a{text-decoration:none;color:var(--muted)}
+
+/* hero */
+.hero{padding:48px 0 40px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.brand{display:flex;align-items:center;gap:18px;margin-bottom:22px}
+.brand img{width:92px;height:92px;object-fit:contain}
+.brand h1{font-size:clamp(26px,4vw,38px)}
+.brand small{display:block;color:var(--muted);font-size:14px;font-family:var(--sans);font-weight:400;margin-top:4px}
+.hero p{margin:0 0 14px;max-width:34em}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.links a{border:1.5px solid var(--green);padding:8px 16px;border-radius:999px;text-decoration:none;font-weight:500;font-size:15px}
+.links a:hover{background:var(--green);color:#fff}
+.links a.main{background:var(--green);color:#fff}
+.links a.btnlink{border:1.5px solid var(--green);padding:8px 16px;border-radius:999px;text-decoration:none;font-weight:500;font-size:15px}
+.links a.main:hover{background:var(--green-d)}
+.photo{aspect-ratio:4/5;background:var(--green-l);border-radius:4px 80px 4px 4px;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* stay */
+.stay{padding:36px 0;border-bottom:1px solid var(--line)}
+.stay h2{font-size:24px;margin-bottom:6px}
+.stay p{margin:0 0 16px}
+.stay-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:14px}
+.stay-grid>div{border:1.5px solid var(--green);padding:14px 18px;display:flex;flex-direction:column;gap:2px}
+.stay-grid span{color:var(--muted);font-size:14px}
+.stay-grid b{font-family:var(--serif);font-size:26px;color:var(--green)}
+.stay-grid small{color:var(--muted)}
+.stay-grid .addr a{font-weight:500}
+.book{background:var(--green-l);padding:22px;margin-top:8px}
+.book h3{font-size:19px;margin-bottom:6px}
+.book form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0 8px}
+.book label{display:flex;flex-direction:column;gap:4px;font-size:14px;color:var(--muted);min-width:0}
+.book .wide{grid-column:1/-1}
+.book input{font:inherit;padding:9px 10px;border:1px solid var(--line);border-radius:3px;color:var(--ink);background:#fff}
+.book textarea{margin-top:10px}
+.book input{width:100%;min-width:0;min-height:42px;font-size:16px}
+@media(max-width:760px){.book form{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* notice */
+.notice{background:var(--green);color:#fff;padding:34px 0}
+.notice h2{color:#fff;font-size:21px;margin-bottom:12px}
+.notice ul{margin:0;padding-left:1.2em}
+.notice li{margin:6px 0}
+.notice strong{color:#cfe6d9}
+
+/* shop */
+.shop{padding:48px 0 120px}
+.shop h2{font-size:26px;margin-bottom:6px}
+.shop .sub{color:var(--muted);margin:0 0 26px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(230px,100%),1fr));gap:22px}
+.card{border:1px solid var(--line);display:flex;flex-direction:column;min-width:0}
+.card .img{aspect-ratio:1;background:var(--green-l);display:grid;place-items:center;color:var(--leaf);font-size:14px;position:relative;overflow:hidden}
+.card .img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.thumbs{display:flex;gap:6px;padding:8px 16px 0}
+.thumbs button{width:44px;height:44px;padding:0;border:2px solid transparent;background:none;cursor:pointer;opacity:.7}
+.thumbs button[aria-current="true"]{border-color:var(--green);opacity:1}
+.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.tag{position:absolute;left:10px;top:10px;background:var(--green);color:#fff;font-size:12px;padding:2px 10px;border-radius:999px}
+.card .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{font-size:17px}
+.card .desc{color:var(--muted);font-size:14px;margin:0;flex:1}
+.price{font-weight:700;font-size:18px}
+.btn{font:inherit;cursor:pointer;border:0;background:var(--green);color:#fff;padding:10px 14px;border-radius:3px;font-weight:500}
+.btn:hover{background:var(--green-d)}
+.btn:disabled{background:#b7c4bd;cursor:not-allowed}
+.btn.ghost{background:#fff;color:var(--green);border:1.5px solid var(--green)}
+.card.sold{opacity:.65}
+
+/* cart */
+.bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:2px solid var(--green);padding:12px 20px;z-index:20}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:0}
+.drawer{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:30;display:none;justify-content:flex-end}
+.drawer.open{display:flex}
+.panel{background:#fff;width:min(460px,100%);height:100%;overflow:auto;padding:24px;display:flex;flex-direction:column;gap:14px}
+.panel h2{font-size:22px}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:center;border-bottom:1px solid var(--line);padding:8px 0;font-size:15px}
+.qty{display:inline-flex;align-items:center;gap:8px}
+.qty button{width:28px;height:28px;border:1px solid var(--green);background:#fff;color:var(--green);cursor:pointer;border-radius:3px;font-size:16px}
+.warn{background:var(--green-l);border-left:4px solid var(--green);padding:10px 14px;font-size:14px}
+textarea{width:100%;min-height:200px;font:inherit;font-size:14px;border:1px solid var(--line);padding:10px;border-radius:3px;resize:vertical}
+.note{font-size:13px;color:var(--muted);margin:0}
+footer{border-top:1px solid var(--line);padding:26px 0 90px;color:var(--muted);font-size:14px}
+
+@media(max-width:760px){
+  .hero .wrap{grid-template-columns:1fr}
+  .photo{order:-1;aspect-ratio:3/2;border-radius:4px 48px 4px 4px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.topbar .wrap{gap:12px;flex-wrap:wrap}
+.topbar .right{display:flex;gap:14px;align-items:center;color:var(--muted)}
+.lang{display:flex;gap:4px}
+.lang button{font:inherit;font-size:13px;border:1px solid var(--line);background:#fff;color:var(--muted);padding:3px 10px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#fff}
+:root:lang(ja){--serif:"Noto Serif JP","Yu Mincho",serif;--sans:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <a href="index.html" data-i18n="nav.back"></a>
+  <div class="right"><span data-i18n="nav.zone"></span><nav class="lang" id="langSwitch"></nav></div>
+</div></div>
+
+<!-- 品牌介紹 -->
+<header class="hero"><div class="wrap">
+  <div>
+    <div class="brand">
+      <img src="assets/partner_1_logo.jpg" data-i18n-attr="alt:alt.logo" alt="">
+      <h1>植蕨生活<small data-i18n="brand.sub"></small></h1>
+    </div>
+    <p data-i18n="hero.p1"></p>
+    <p data-i18n="hero.p2"></p>
+    <div class="links">
+      <a class="main" id="lnkFB" href="#" target="_blank" rel="noopener" data-i18n="lnk.fb"></a>
+      <a id="lnkIG" href="#" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+  <div class="photo"><img src="assets/partner_hostel.jpg" data-i18n-attr="alt:alt.photo" alt=""></div>
+</div></header>
+
+<!-- 民宿資訊與訂房 -->
+<section class="stay" id="stay"><div class="wrap">
+  <h2 data-i18n="stay.title"></h2>
+  <p data-i18n="stay.intro"></p>
+  <div class="stay-grid">
+    <div class="rate"><span data-i18n="rate.wd"></span><b>NT$1,800</b><small data-i18n="rate.unit"></small></div>
+    <div class="rate"><span data-i18n="rate.we"></span><b>NT$3,000</b><small data-i18n="rate.unit"></small></div>
+    <div class="addr"><span data-i18n="stay.addr"></span>
+      <a href="https://www.google.com/maps/search/?api=1&query=%E5%8D%97%E6%8A%95%E7%B8%A3%E5%9C%8B%E5%A7%93%E9%84%89%E4%B8%AD%E6%AD%A3%E8%B7%AF%E5%9B%9B%E6%AE%B5153-2%E8%99%9F" target="_blank" rel="noopener">南投縣國姓鄉中正路四段153-2號</a></div>
+  </div>
+
+  <div class="book">
+    <h3 data-i18n="book.title"></h3>
+    <p class="note" data-i18n="book.note"></p>
+    <form id="bk">
+      <label><span data-i18n="f.in"></span><input type="date" id="bkIn" required></label>
+      <label><span data-i18n="f.out"></span><input type="date" id="bkOut" required></label>
+      <label><span data-i18n="f.ppl"></span><input type="number" id="bkPpl" min="1" value="2" required></label>
+      <label><span data-i18n="f.name"></span><input type="text" id="bkName" required autocomplete="name"></label>
+      <label class="wide"><span data-i18n="f.contact"></span><input type="text" id="bkContact" required></label>
+      <label class="wide"><span data-i18n="f.note"></span><input type="text" id="bkNote"></label>
+      <div class="wide"><button class="btn" type="submit" data-i18n="book.gen"></button></div>
+    </form>
+    <p class="note" id="bkErr" role="alert" style="color:#a33"></p>
+    <div id="bkOutBox" hidden>
+      <textarea id="bkMsg" readonly></textarea>
+      <p class="note" data-i18n="msg.note"></p>
+      <div class="links"><button class="btn ghost" id="bkCopy" type="button" data-i18n="copy"></button><span id="stayContact" style="display:contents"></span></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 結帳說明 -->
+<section class="notice" id="howto"><div class="wrap">
+  <h2 data-i18n="notice.title"></h2>
+  <ul>
+    <li data-i18n="notice.l1"></li>
+    <li data-i18n="notice.l2"></li>
+    <li data-i18n="notice.l3"></li>
+    <li data-i18n="notice.l4"></li>
+    <li data-i18n="notice.l5"></li>
+  </ul>
+</div></section>
+
+<!-- 商品 -->
+<main class="shop" id="shop"><div class="wrap">
+  <h2 data-i18n="shop.title"></h2>
+  <p class="sub" data-i18n="shop.sub"></p>
+  <div class="grid" id="grid"></div>
+</div></main>
+
+<footer><div class="wrap" data-i18n="footer"></div></footer>
+
+<!-- 採集清單 -->
+<div class="bar"><div class="wrap">
+  <span id="barText"></span>
+  <button class="btn" id="openCart" data-i18n="bar.view"></button>
+</div></div>
+
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" data-i18n-attr="aria-label:cart.title">
+  <div class="panel">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h2 data-i18n="cart.title"></h2>
+      <button class="btn ghost" id="closeCart" data-i18n="close"></button>
+    </div>
+    <div id="rows"></div>
+    <div class="row" style="font-weight:700"><span data-i18n="total"></span><span id="total">NT$0</span></div>
+    <div class="warn" data-i18n="cart.warn"></div>
+    <button class="btn" id="gen" data-i18n="cart.gen"></button>
+    <textarea id="msg" readonly data-i18n-attr="placeholder:cart.ph"></textarea>
+    <p class="note" data-i18n="msg.note"></p>
+    <button class="btn ghost" id="copy" data-i18n="copy"></button>
+    <p class="note" data-i18n="cart.after"></p>
+    <div class="links" id="contact"></div>
+  </div>
+</div>
+
+<script src="assets/i18n.js"></script>
+<script>
+/* ===== 設定區：只要改這裡 ===== */
+const CONFIG = {
+  partnerName: "植蕨生活",
+  refCode: "WOW-REF",                 // 介紹代碼（可改成你想追蹤的代碼）
+  referrer: "沃森 wow forest",
+  ig: "https://www.instagram.com/whoplant2022/",
+  fb: "https://www.facebook.com/share/r/1CxMBVtRw5/?mibextid=wwXIfr",  // 民宿 Facebook 介紹
+  stay: {name:"植蕨行旅", code:"WOW50", amount:50, weekday:1800, weekend:3000, weekendDays:[5,6]}, // 折扣每晚折抵；週五、週六過夜為假日（0=週日…6=週六）
+  contact: [{key:"c.ig", url:"https://www.instagram.com/whoplant2022/"}]  // key 對應字典
+};
+
+/* ===== 商品資料（之後可改成讀 Google 試算表）=====
+   name / desc 三語；tag："pup" 側芽 / "spore" 孢子苗；status："live" 上架 / "sold" 售完
+   照片：imgs 放多張，例如 imgs:["assets/g001-1.jpg","assets/g001-2.jpg"]，第一張為主圖 */
+const PRODUCTS = [
+  {id:"G001", tag:"spore", price:500, status:"live", imgs:["assets/Shanka_M_1.jpg","assets/Shanka_S_1.jpg"],
+   name:{zh:"白法螺 Shanka", en:"Shanka (白法螺)", ja:"Shanka (白法螺)"},
+   desc:{zh:"2.5寸盆｜寬大葉片，孢子囊形成會側卷。", en:"2.5-inch pot | Wide fronds; the fertile fronds curl sideways when the sori form.", ja:"2.5寸鉢｜幅広の葉。胞子嚢ができると、葉が横に巻きます。"}},
+  {id:"G002", tag:"spore", price:350, status:"live", imgs:["assets/FSQ_M_1.jpg","assets/FSQ_S_1.jpg"],
+   name:{zh:"捲捲鹿 FoongSiQi", en:"FoongSiQi (捲捲鹿)", ja:"FoongSiQi (捲捲鹿)"},
+   desc:{zh:"2.5寸盆｜孢子成熟葉子會勾勾手。", en:"2.5-inch pot | When the spores mature, the fronds curl into a hook-like shape.", ja:"2.5寸鉢｜胞子が成熟すると、葉先がフック状に曲がります。"}},
+  {id:"G003", tag:"spore", price:700, status:"live", imgs:["assets/ARpuli_3_M_1.jpg","assets/ARpuli_3_S_1.jpg"],
+   name:{zh:"澳銀埔里#3 AR_Puli#3", en:"AR_Puli#3 (澳銀埔里#3)", ja:"AR_Puli#3 (澳銀埔里#3)"},
+   desc:{zh:"2.5寸盆｜尖刺，母本表現細尖無分叉。", en:"2.5-inch pot | Spiky tips. The mother plant has fine, pointed fronds with no forking.", ja:"2.5寸鉢｜先端が尖るタイプ。親株は細く尖った葉で、分岐がありません。"}},
+  {id:"G004", tag:"spore", price:700, status:"live", imgs:["assets/ARpuli_4_M_1.jpg","assets/ARpuli_4_S_1.jpg"],
+   name:{zh:"澳銀埔里#4 AR_Puli#4", en:"AR_Puli#4 (澳銀埔里#4)", ja:"AR_Puli#4 (澳銀埔里#4)"},
+   desc:{zh:"2.5寸盆｜尖刺，母本表現尖刺如樹枝。", en:"2.5-inch pot | Spiky tips. The mother plant's pointed fronds look like tree branches.", ja:"2.5寸鉢｜先端が尖るタイプ。親株は尖った葉が樹の枝のように伸びます。"}},
+  {id:"G005", tag:"spore", price:700, status:"live", imgs:["assets/ARpuli_8_M_1.jpg","assets/ARpuli_8_S_1.jpg"],
+   name:{zh:"澳銀埔里#8 AR_Puli#8", en:"AR_Puli#8 (澳銀埔里#8)", ja:"AR_Puli#8 (澳銀埔里#8)"},
+   desc:{zh:"2.5寸盆｜尖刺，母本表現尾端拉長比例高。", en:"2.5-inch pot | Spiky tips. The mother plant often shows elongated frond ends.", ja:"2.5寸鉢｜先端が尖るタイプ。親株は葉の先端が長く伸びる割合が高いです。"}},
+  {id:"G006", tag:"spore", price:1000, status:"live", imgs:["assets/VP17_M_1.jpg","assets/VP17_S_1.jpg"],
+   name:{zh:"VP17(澳銀)", en:"VP17 (澳銀)", ja:"VP17 (澳銀)"},
+   desc:{zh:"2.5寸盆｜尖刺，母本表現尖刺細緻，細節表現佳。", en:"2.5-inch pot | Spiky tips. The mother plant has fine, delicate points with excellent detail.", ja:"2.5寸鉢｜先端が尖るタイプ。親株は先端が繊細で、ディテールの表現に優れています。"}},
+  {id:"G007", tag:"spore", price:500, status:"live", imgs:["assets/SilverPhoenix_M_1.jpg","assets/SilverPhoenix_S_1.jpg"],
+   name:{zh:"銀鳳 SilverPhoenix", en:"SilverPhoenix (銀鳳)", ja:"SilverPhoenix (銀鳳)"},
+   desc:{zh:"2.5寸盆｜有尖刺表現，厚葉、白毛分叉。", en:"2.5-inch pot | Shows spiky tips, with thick fronds and forked white hairs.", ja:"2.5寸鉢｜先端が尖る特徴があり、葉は厚く、白い毛が分岐しています。"}},
+  {id:"G008", tag:"spore", price:350, status:"live", imgs:["assets/Moonlight_M_1.jpg","assets/Moonlight_S_1.jpg"],
+   name:{zh:"月光 Moonlight", en:"Moonlight (月光)", ja:"Moonlight (月光)"},
+   desc:{zh:"2.5寸盆｜有特選機會，厚白毛多分岔。", en:"2.5-inch pot | Good chance of producing select-quality plants; thick white hairs with lots of forking.", ja:"2.5寸鉢｜選抜級の個体が出る可能性があります。白い毛は厚く、多く分岐します。"}},
+  {id:"G009", tag:"spore", price:500, status:"live", imgs:["assets/Banna_A_M_1.jpg","assets/Banna_A_S_1.jpg"],
+   name:{zh:"巴納欸加 Banna#A+", en:"Banna#A+ (巴納欸加)", ja:"Banna#A+ (巴納欸加)"},
+   desc:{zh:"2.5寸盆｜母本為交種小型態，各種表現都有。", en:"2.5-inch pot | The mother plant is a compact hybrid; offspring show a wide range of traits.", ja:"2.5寸鉢｜親株は小型の交配種で、さまざまな特徴の個体が出ます。"}},
+  {id:"G010", tag:"spore", price:1200, status:"live", imgs:["assets/bif_sp_white_M_1.jpg","assets/bif_sp_white_S_1.jpg"],
+   name:{zh:"日本白普 bif sp white", en:"bif sp white (日本白普)", ja:"bif sp white (日本白普)"},
+   desc:{zh:"4.5寸盆｜表現多樣，有綴化孢子葉，也有類澳銀表現。", en:"4.5-inch pot | Highly varied: some have cristate (fasciated) fertile fronds, and some look like Australian silver types.", ja:"4.5寸鉢｜個体差が大きく、綴化した胞子葉を持つものや、澳銀に近い特徴を持つものもあります。"}}
+];
+
+/* ===== 以下不用改 ===== */
+const $ = id => document.getElementById(id);
+const t = (k,v) => I18N.t(k,v), L = o => I18N.L(o);
+const cart = {};   // id -> qty
+const fmt = n => "NT$" + n.toLocaleString("en-US");
+I18N.vars = {amt:CONFIG.stay.amount, code:CONFIG.stay.code};
+
+$("lnkIG").href = CONFIG.ig; $("lnkFB").href = CONFIG.fb;
+
+function renderGrid(){
+  $("grid").innerHTML = PRODUCTS.filter(p=>p.status!=="draft").map(p=>{
+    const sold = p.status==="sold", nm = L(p.name);
+    return `<article class="card ${sold?"sold":""}">
+      <div class="img">${p.imgs[0]?`<img src="${p.imgs[0]}" alt="${nm}" loading="lazy" data-ph="${t("nophoto")}" onerror="this.replaceWith(document.createTextNode(this.dataset.ph))">`:t("nophoto")}<span class="tag">${sold?t("sold"):t("tag."+p.tag)}</span></div>
+      ${p.imgs.length>1?`<div class="thumbs">${p.imgs.map((u,i)=>`<button data-th="${p.id}|${i}" aria-label="${t("aria.photo",{n:i+1})}" aria-current="${i===0}"><img src="${u}" alt="" onerror="this.closest('button').remove()"></button>`).join("")}</div>`:""}
+      <div class="body"><h3>${nm}</h3><p class="desc">${L(p.desc)}</p>
+      <div class="price">${fmt(p.price)}</div>
+      <button class="btn" data-add="${p.id}" ${sold?"disabled":""}>${sold?t("sold"):t("add")}</button></div>
+    </article>`}).join("");
+}
+function count(){return Object.values(cart).reduce((a,b)=>a+b,0)}
+function total(){return Object.entries(cart).reduce((s,[id,q])=>s+q*PRODUCTS.find(p=>p.id===id).price,0)}
+function renderCart(){
+  $("barText").textContent = t("bar",{n:count(), total:fmt(total())});
+  $("total").textContent = fmt(total());
+  const ids = Object.keys(cart);
+  $("rows").innerHTML = ids.length ? ids.map(id=>{
+    const p = PRODUCTS.find(x=>x.id===id);
+    return `<div class="row"><span>${L(p.name)}<br><small>${fmt(p.price)}</small></span>
+      <span class="qty"><button data-dec="${id}" aria-label="${t("aria.dec")}">−</button>${cart[id]}<button data-inc="${id}" aria-label="${t("aria.inc")}">＋</button></span></div>`;
+  }).join("") : `<p class="note">${t("cart.empty")}</p>`;
+}
+function renderContacts(){
+  $("contact").innerHTML = CONFIG.contact.map(c=>`<a href="${c.url}" target="_blank" rel="noopener">${t(c.key)}</a>`).join("");
+  $("stayContact").innerHTML = CONFIG.contact.map(c=>`<a class="btnlink" href="${c.url}" target="_blank" rel="noopener">${t(c.key)}</a>`).join("");
+}
+/* 傳給夥伴的訊息一律用中文產生（夥伴看得懂），並註明客人使用的語言 */
+function buildMsg(){
+  const lines = Object.keys(cart).map(id=>{
+    const p = PRODUCTS.find(x=>x.id===id);
+    return `‧${p.name.zh}（${p.id}）x${cart[id]}＝${fmt(p.price*cart[id])}`;
+  });
+  return `【客座訂單】${CONFIG.partnerName}\n`+
+    `介紹代碼：${CONFIG.refCode}（由 ${CONFIG.referrer} 介紹）\n`+
+    `客人使用語言：${I18N.names[I18N.lang]}\n`+
+    `－－－－－－－－\n${lines.join("\n")}\n－－－－－－－－\n`+
+    `商品合計：${fmt(total())}（未含運費）\n`+
+    `寄送地區／國家：\n姓名：\n聯絡方式：\n備註：`;
+}
+document.addEventListener("click",e=>{
+  const x = e.target;
+  const th = x.closest("[data-th]");
+  if(th){
+    const [id,i] = th.dataset.th.split("|"), card = th.closest(".card");
+    const im = card.querySelector(".img img");
+    if(im) im.src = PRODUCTS.find(p=>p.id===id).imgs[+i];
+    card.querySelectorAll("[data-th]").forEach(b=>b.setAttribute("aria-current", b===th));
+  }
+  if(x.dataset.add){cart[x.dataset.add]=(cart[x.dataset.add]||0)+1;renderCart();}
+  if(x.dataset.inc){cart[x.dataset.inc]++;renderCart();}
+  if(x.dataset.dec){if(--cart[x.dataset.dec]<=0)delete cart[x.dataset.dec];renderCart();}
+});
+$("openCart").onclick = ()=>{$("drawer").classList.add("open")};
+$("closeCart").onclick = ()=>{$("drawer").classList.remove("open")};
+$("drawer").addEventListener("click",e=>{if(e.target.id==="drawer")$("drawer").classList.remove("open")});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")$("drawer").classList.remove("open")});
+$("gen").onclick = ()=>{
+  if(!count()){$("msg").value=t("cart.addfirst");return;}
+  $("msg").value = buildMsg();
+};
+async function copyFrom(ta,btn,ok){
+  if(!ta.value||ok===false) return;
+  try{await navigator.clipboard.writeText(ta.value)}catch(_){ta.select();document.execCommand("copy")}
+  btn.textContent = t("copied"); setTimeout(()=>btn.textContent=t("copy"),1800);
+}
+$("copy").onclick = ()=>copyFrom($("msg"),$("copy"),count()>0);
+$("bkCopy").onclick = ()=>copyFrom($("bkMsg"),$("bkCopy"));
+
+/* ===== 民宿訂房 ===== */
+const today = new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10);
+$("bkIn").min = today; $("bkOut").min = today;
+let bkErrKey = "";
+$("bk").addEventListener("submit",e=>{
+  e.preventDefault();
+  const inD=$("bkIn").value, outD=$("bkOut").value;
+  const nights = Math.round((new Date(outD)-new Date(inD))/864e5);
+  if(!(nights>0)){bkErrKey="err.dates";$("bkErr").textContent=t(bkErrKey);$("bkOutBox").hidden=true;return;}
+  bkErrKey=""; $("bkErr").textContent="";
+  const st = CONFIG.stay; let wd=0, we=0;
+  const [y,m,d] = inD.split("-").map(Number);
+  for(let i=0;i<nights;i++){ st.weekendDays.includes(new Date(y,m-1,d+i).getDay()) ? we++ : wd++; }
+  const gross = wd*st.weekday + we*st.weekend, off = st.amount*nights;
+  $("bkMsg").value =
+`【民宿訂房】${st.name}（${CONFIG.partnerName}）
+介紹代碼：${CONFIG.refCode}（由 ${CONFIG.referrer} 介紹）
+客人使用語言：${I18N.names[I18N.lang]}
+折扣碼：${st.code}（使用本頁訂房，每晚折 ${fmt(st.amount)}，${nights} 晚共折 ${fmt(off)}）
+－－－－－－－－
+入住：${inD}
+退房：${outD}（共 ${nights} 晚）
+人數：${$("bkPpl").value} 人
+姓名：${$("bkName").value}
+聯絡方式：${$("bkContact").value}
+備註：${$("bkNote").value||"無"}
+－－－－－－－－
+預估金額（以 2 人計）：
+平日 ${wd} 晚 x ${fmt(st.weekday)}＋假日 ${we} 晚 x ${fmt(st.weekend)}＝${fmt(gross)}
+折扣 －${fmt(off)}
+預估應付：${fmt(gross-off)}
+（週五、週六過夜為假日，其餘為平日。實際金額與房況請夥伴確認。）`;
+  $("bkOutBox").hidden=false;
+});
+
+/* ===== 語言切換後重繪動態內容 ===== */
+function renderAll(){ renderGrid(); renderCart(); renderContacts(); if(bkErrKey) $("bkErr").textContent=t(bkErrKey); }
+document.addEventListener("langchange", renderAll);
+I18N.apply(); renderAll();
+</script>
+</body>
+</html>
