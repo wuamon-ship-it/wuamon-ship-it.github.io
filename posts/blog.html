@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head><meta name="description" content="植播電台 Zhibodiantai 文章列表，鹿角蕨型態觀察、栽培筆記與育種紀錄不定期更新。">
+  <meta property="og:title" content="文章｜植播電台 Zhibodiantai">
+<meta property="og:description" content="鹿角蕨型態觀察、栽培筆記與育種紀錄，不定期更新。">
+<meta property="og:image" content="https://wuamon-ship-it.github.io/images/wow-forest-logo.jpeg">
+<meta property="og:url" content="https://wuamon-ship-it.github.io/blog.html">
+<meta property="og:type" content="website">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文章｜植播電台 Zhibodiantai</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="images/wow-forest-logo.jpeg">
+<style>
+/* 「植人對談」專欄卡片：版型與一般文章相同，只有封面改成深綠色塊 + 聯名 logo */
+.col-cover{position:relative;width:100%;height:100%;min-height:240px;background:#1f3d2b;
+  display:flex;align-items:center;justify-content:center}
+.col-cover .col-badge{position:absolute;top:14px;left:14px;border:1px solid #e3a678;color:#e3a678;
+  border-radius:99px;padding:1px 12px;font-size:11px;letter-spacing:.25em}
+.col-cover .col-logos{display:flex;align-items:center;gap:8px;background:#fbf9f2;border-radius:10px;padding:8px 12px}
+.col-cover .col-logos img{height:64px;width:auto;display:block}
+.col-cover .col-logos span{color:#c2703d;font-family:Georgia,serif;font-size:20px}
+.card.column-card h3{color:#1f3d2b}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand"><img src="images/wow-forest-logo.jpeg" alt="植播電台 Zhibodiantai 品牌 logo">植播電台<span class="brand-sub">Zhibodiantai</span></a>
+    <div class="nav-links">
+      <a href="index.html">關於我</a>
+      <a href="collection.html">園區收藏</a>
+      <a href="shop.html">販售目錄</a>
+      <a href="guest.html">客座夥伴</a>
+      <a href="care.html">栽培知識</a>
+      <a href="blog.html" class="active">文章</a>
+      <a href="contact.html">聯絡資訊</a>
+    </div>
+    <button id="navToggle" class="nav-toggle" aria-label="開啟選單">☰</button>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="page-head">
+    <div class="eyebrow">Notes & Observations</div>
+    <h1>文章</h1>
+    <p class="sub">不定期分享型態觀察、栽培筆記與育種紀錄。</p>
+  </header>
+
+  <div class="grid" id="grid"></div>
+</div>
+
+<footer class="site-footer">© 植播電台 Zhibodiantai · 個人栽培紀錄與販售</footer>
+
+<script src="js/common.js"></script>
+<script>
+// ------------------------------------------------------------------
+// 文章清單：每寫一篇新文章，先照 post-template.html 複製改好，
+// 存到 posts 資料夾（例如 posts/2026-09-上板教學.html），
+// 再回來這裡新增一筆物件即可，新文章建議加在陣列最上面（最新的在前面）。
+// - title：文章標題
+// - date：發布日期，顯示用
+// - excerpt：摘要，一兩句話，會顯示在卡片上
+// - cover：封面圖片路徑，沒有的話可以留空字串 ""
+// - url：文章檔案的路徑
+// ------------------------------------------------------------------
+const posts = [
+{
+  column: true,
+  badge: "專欄 · VOL. 01",
+  title: "植人對談 Vol. 01｜鹿角蕨到底需不需要施肥？",
+  date: "2026-10-20",
+  excerpt: "施肥能讓鹿角蕨長得更快，但如果同時增加肥傷的風險，這樣還值得嗎？植蕨生活 Duke × 沃森阿蒙。",
+  url: "posts/2026-10-植人對談-vol01.html"
+},
+{
+  column: true,
+  badge: "專欄 · INTRO",
+  title: "植人對談 Intro｜我們都只是真理拼圖的一塊",
+  date: "2026-10-16",
+  excerpt: "把兩套種植邏輯放在一起，會發生什麼事？沃森 × 植蕨生活 聯合專欄。",
+  url: "posts/2026-10-植人對談-intro.html"
+},
+{
+  title: "看懂鹿角蕨市場的縮寫與命名",
+  date: "2026-09-08",
+  excerpt: "收錄一些我自己曾經很難理解、或有人問過我的縮寫與寫法，不是標準答案，只是約定成俗的整理。",
+  cover: "",
+  url: "posts/2026-09-鹿角蕨密碼筆記.html"
+},  
+{
+    title: "用泥炭土搶救鹿角蕨的方法",
+    date: "2026-09-04",
+    excerpt: "泥炭土竟然也可以種鹿角蕨？而且還是在鹿角蕨最脆弱的時候？",
+    cover: "images/cv_at1.jpeg",
+    url: "posts/post-example.html"
+  },
+];
+
+const grid = document.getElementById('grid');
+
+function render(){
+  grid.innerHTML = posts.map(p => `
+    <a class="card${p.column ? ' column-card' : ''}" href="${p.url}" style="text-decoration:none;color:inherit;display:block;">
+      <div class="frond">${p.column
+        ? `<div class="col-cover"><span class="col-badge">${p.badge || '專欄 COLUMN'}</span><div class="col-logos"><img src="assets/wow-forest-logo-clean.png" alt="沃森 wow forest logo"><span>×</span><img src="assets/partner_1_logo.jpg" alt="植蕨生活 logo"></div></div>`
+        : (p.cover ? `<img src="${p.cover}" alt="${p.title}" loading="lazy">` : frondSVG('#5a6e46'))}</div>
+      <div class="body">
+        <h3>${p.title}</h3>
+        <div class="collection-note" style="padding:0;flex:1;">
+          <div style="font-size:12px;opacity:.7;margin-bottom:6px;">${p.date}</div>
+          ${p.excerpt}
+        </div>
+      </div>
+    </a>
+  `).join('');
+}
+
+render();
+</script>
+
+</body>
+</html>
