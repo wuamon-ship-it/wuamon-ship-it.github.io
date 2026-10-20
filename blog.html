@@ -68,6 +68,15 @@
 const posts = [
 {
   column: true,
+  badge: "專欄 · VOL. 01",
+  title: "植人對談 Vol. 01｜鹿角蕨到底需不需要施肥？",
+  date: "2026-10-20",
+  excerpt: "施肥能讓鹿角蕨長得更快，但如果同時增加肥傷的風險，這樣還值得嗎？植蕨生活 Duke × 沃森阿蒙。",
+  url: "posts/2026-10-植人對談-vol01.html"
+},
+{
+  column: true,
+  badge: "專欄 · INTRO",
   title: "植人對談 Intro｜我們都只是真理拼圖的一塊",
   date: "2026-10-16",
   excerpt: "把兩套種植邏輯放在一起，會發生什麼事？沃森 × 植蕨生活 聯合專欄。",
@@ -95,7 +104,7 @@ function render(){
   grid.innerHTML = posts.map(p => `
     <a class="card${p.column ? ' column-card' : ''}" href="${p.url}" style="text-decoration:none;color:inherit;display:block;">
       <div class="frond">${p.column
-        ? `<div class="col-cover"><span class="col-badge">專欄 COLUMN</span><div class="col-logos"><img src="images/wow-forest-logo.jpeg" alt="沃森 wow forest logo"><span>×</span><img src="assets/partner_1_logo.jpg" alt="植蕨生活 logo"></div></div>`
+        ? `<div class="col-cover"><span class="col-badge">${p.badge || '專欄 COLUMN'}</span><div class="col-logos"><img src="assets/wow-forest-logo-clean.png" alt="沃森 wow forest logo"><span>×</span><img src="assets/partner_1_logo.jpg" alt="植蕨生活 logo"></div></div>`
         : (p.cover ? `<img src="${p.cover}" alt="${p.title}" loading="lazy">` : frondSVG('#5a6e46'))}</div>
       <div class="body">
         <h3>${p.title}</h3>
