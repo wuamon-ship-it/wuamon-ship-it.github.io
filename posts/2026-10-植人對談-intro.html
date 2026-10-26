@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-<head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-M5K2PCSPEG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-M5K2PCSPEG');
-</script>
-  <meta name="description" content="「植人對談」是沃森刊載的系列專欄，邀請不同的植物愛好者、種植者、育種者與研究者，把兩套種植邏輯攤開來談。首篇 Intro：我們都只是真理拼圖的一塊。">
+<head><meta name="description" content="「植人對談」是沃森刊載的系列專欄，邀請不同的植物愛好者、種植者、育種者與研究者，把兩套種植邏輯攤開來談。首篇 Intro：我們都只是真理拼圖的一塊。">
   <meta property="og:title" content="植人對談｜我們都只是真理拼圖的一塊｜植播電台 Zhibodiantai">
 <meta property="og:description" content="不急著找唯一答案，把思考的過程留下來。沃森 × 植蕨生活 聯合專欄。">
 <meta property="og:image" content="https://wuamon-ship-it.github.io/assets/partner_1_logo.jpg">
@@ -36,7 +26,22 @@
 .next-vol small{letter-spacing:.3em;font-size:12px;opacity:.8}
 .next-vol strong{display:block;margin:6px 0;font-size:1.15em;line-height:1.5}
 .next-vol span{font-size:.9em;opacity:.9}
+/* 字級切換：小 / 中 / 大 */
+.about-text{--fs:18px}
+html[data-fs="s"] .about-text{--fs:16px}
+html[data-fs="l"] .about-text{--fs:21px}
+.about-text p,.about-text .chips span{font-size:var(--fs);line-height:2}
+.about-text .ask,.about-text .pull{font-size:calc(var(--fs)*1.1);line-height:1.9}
+.about-text h2{font-size:calc(var(--fs)*1.3)}
+.about-text .say .who{font-size:calc(var(--fs)*.8)}
+.fs-ctl{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:50;display:flex;align-items:center;gap:2px;
+  background:#fff;border:1px solid rgba(0,0,0,.18);border-radius:99px;padding:4px 6px 4px 12px;box-shadow:0 4px 14px rgba(0,0,0,.15);font-size:13px;color:#444}
+.fs-ctl span{margin-right:6px;letter-spacing:.1em}
+.fs-ctl button{border:0;background:transparent;color:#444;border-radius:99px;min-width:36px;height:32px;cursor:pointer;font:inherit;font-size:14px}
+.fs-ctl button[aria-pressed="true"]{background:#5a6e46;color:#fff}
+.fs-ctl button:nth-of-type(1){font-size:12px}.fs-ctl button:nth-of-type(3){font-size:17px}
 </style>
+<script>try{var v=localStorage.getItem("zd-fs");if(v==="s"||v==="l")document.documentElement.setAttribute("data-fs",v)}catch(e){}</script>
 </head>
 <body>
 
@@ -145,6 +150,21 @@
 
 <footer class="site-footer">© 植播電台 Zhibodiantai · 個人栽培紀錄與販售</footer>
 
+<div class="fs-ctl" role="group" aria-label="文字大小"><span>字級</span>
+  <button type="button" data-fs="s" aria-pressed="false">小</button>
+  <button type="button" data-fs="m" aria-pressed="true">中</button>
+  <button type="button" data-fs="l" aria-pressed="false">大</button>
+</div>
+<script>
+(function(){
+  var k='zd-fs', root=document.documentElement, btns=document.querySelectorAll('.fs-ctl button');
+  function apply(v){ root.setAttribute('data-fs',v); btns.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.fs===v ? 'true':'false'); }); }
+  var cur='m'; try{ cur=localStorage.getItem(k)||'m'; }catch(e){}
+  if(['s','m','l'].indexOf(cur)<0) cur='m';
+  apply(cur);
+  btns.forEach(function(b){ b.addEventListener('click',function(){ apply(b.dataset.fs); try{ localStorage.setItem(k,b.dataset.fs); }catch(e){} }); });
+})();
+</script>
 <script src="../js/common.js"></script>
 </body>
 </html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-i18n-title="shop.title" data-i18n-desc="shop.desc">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M5K2PCSPEG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M5K2PCSPEG');
+</script>
+  <meta name="description" content="沃森 wow forest 桃園溫室，販售鹿角蕨孢子苗、側芽、植株為一物一拍，週邊資材，國內外批發進口。">
+  <meta property="og:title" content="沃森 wow forest｜鹿角蕨孢子苗 販售目錄">
+<meta property="og:description" content="每株獨一無二的鹿角蕨孢子苗，一物一拍，桃園自家溫室育種。">
+<meta property="og:image" content="https://wuamon-ship-it.github.io/images/wow-forest-logo.jpeg">
+<meta property="og:url" content="https://wuamon-ship-it.github.io/shop.html">
+<meta property="og:type" content="website">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>沃森 wow forest｜鹿角蕨孢子苗 販售目錄</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/lang.css">
+<link rel="icon" href="images/wow-forest-logo.jpeg">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand"><img src="images/wow-forest-logo.jpeg" alt="植播電台 Zhibodiantai 品牌 logo" data-i18n-attr="alt:alt.brand">植播電台<span class="brand-sub">Zhibodiantai</span></a>
+    <div class="nav-links">
+      <a href="index.html" data-i18n="nav.about">關於我</a>
+      <a href="collection.html" data-i18n="nav.collection">園區收藏</a>
+      <a href="shop.html" class="active" data-i18n="nav.shop">販售目錄</a>
+      <a href="guest.html" data-i18n="nav.guest">客座夥伴</a>
+      <a href="care.html" data-i18n="nav.care">栽培知識</a>
+      <a href="blog.html" data-i18n="nav.blog">文章</a>
+      <a href="contact.html" data-i18n="nav.contact">聯絡資訊</a>
+    </div>
+    <div class="lang" id="langSwitch" role="group" aria-label="Language"></div>
+    <button id="navToggle" class="nav-toggle" aria-label="開啟選單" data-i18n-attr="aria-label:nav.menu">☰</button>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="page-head">
+    <div class="eyebrow">沃森 wow forest · Staghorn Fern Sporeling Catalog</div>
+    <h1 data-i18n="shop.h1">鹿角蕨孢子苗 販售目錄</h1>
+    <p class="sub" data-i18n="shop.sub">每一株孢子苗都是獨立且獨一無二的個體。即使來自同一批孢子，每株的型態與特徵也可能有所不同，因此我們採用「一物一拍」的方式，逐株展示。看到喜歡的個體，可以先加入下方的「採集清單」。不用立即結帳，選好後再一次整理清單與我聯絡，我會協助確認個體庫存、付款方式與後續交易。</p>
+  </header>
+
+  <div class="grid" id="grid"></div>
+</div>
+
+<footer class="site-footer" data-i18n="footer.shop">© 沃森 wow forest · 植播電台 Zhibodiantai 栽培販售 · 付款與寄送方式請見<a href="contact.html" style="color:var(--rust);"> 聯絡資訊</a></footer>
+
+<button class="fab" id="fabBtn">
+  <span data-i18n="shop.fab">採集清單</span> <span class="count" id="fabCount">0</span>
+</button>
+
+<div class="overlay" id="overlay"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h2 data-i18n="shop.cart.h">採集清單</h2>
+    <button class="close" id="closeBtn" data-i18n="modal.close">關閉 ✕</button>
+  </div>
+  <div class="drawer-list" id="drawerList"></div>
+  <div class="drawer-foot">
+    <div class="subtotal-row"><span data-i18n="shop.subtotal">小計</span><span class="amt" id="subtotal">NT$ 0</span></div>
+    <button class="send-btn" id="copyBtn" data-i18n="shop.copy">複製清單文字，傳給我確認</button>
+    <div class="note" data-i18n="shop.note">按下後會把清單複製到剪貼簿，貼到 Instagram 私訊傳給賣家即可。<br>確認庫存與付款方式後才算成立訂單，不會自動扣款。付款與寄送方式請見「聯絡資訊」頁。</div>
+  </div>
+</div>
+
+<div class="toast" id="toast" data-i18n="shop.toast">已複製清單，貼到訊息傳送即可</div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3 id="modalTitle"></h3>
+      <button id="modalClose" data-i18n="modal.close">關閉 ✕</button>
+    </div>
+    <div class="modal-photos" id="modalPhotos"></div>
+    <div class="modal-note" id="modalNote"></div>
+  </div>
+</div>
+
+<script src="js/translations.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/common.js"></script>
+<script>
+// ------------------------------------------------------------------
+// 商品資料：之後上架新一批，只要在這個陣列裡新增/刪除物件就好，不用改版面。
+// - photo：單張照片路徑
+// - photos：想放多張照片(1~5張)時用這個陣列，例如 ["images/24-091-1.jpeg","images/24-091-2.jpeg"]
+//           兩個都填的話，優先顯示 photos
+// - type：選填，"側芽" 或 "孢子苗"，會在名稱旁顯示小標籤
+// - reference：選填，附上參考資料（可能是母本，也可能是同批表現優秀的個體、型態參考等）
+//     reference: {
+//       label:"母本",              // 自訂：母本 / 同批優秀個體 / 型態參考 等
+//       name:"帝王蕨 母本 M1",
+//       photos:["images/ref-1.jpg"],
+//       note:"說明文字"
+//     }
+//   不需要就留 null
+// - en：英文版 en:{ name:"…" }；特徵的英文放在下面的 TRAITS 對照表
+// ------------------------------------------------------------------
+const plants = [
+ { id:"24-091", name:"Gold Experience Requiem（黃金鎮魂曲） 側芽", en:{ name:"Gold Experience Requiem (黃金鎮魂曲) pup" }, type:"側芽", traits:["葉型：尖刺冠且孢子葉分岔性極佳","尺寸：6寸方盆","特徵：左右對稱且氣場十足"], price:1300, color:"#4c5f3d", photo:"images/24-091.jpg", photos:[], sold:false, reference:{photos:["images/RPNMP01-1.jpeg","images/RPNMP01-2.jpeg","images/RPNMP01-3.jpeg"]}},
+  { id:"24-092", name:"Gold Experience Requiem（黃金鎮魂曲） 側芽", en:{ name:"Gold Experience Requiem (黃金鎮魂曲) pup" }, type:"側芽", traits:["葉型：尖刺冠且孢子葉分岔性極佳","尺寸：6寸方盆","特徵：高尖冠分岔手"], price:1300, color:"#5a6e46", photo:"images/24-092.jpg", photos:[], sold:false, reference:{photos:["images/RPNMP01-1.jpeg","images/RPNMP01-2.jpeg","images/RPNMP01-3.jpeg"]} },
+  { id:"24-093", name:"深綠龍*野銀 孢子苗lot 001", en:{ name:"hillii dragon* veitchii wild sporeling lot 001" }, type:"孢子苗", traits:["葉型：高機率雜交","尺寸：6寸方盆","特徵：孢子面銀白偏多，尖葉分叉"], price:1200, color:"#3f5232", photo:"images/HGVW-1.jpeg", photos:[], sold:true, reference:{photos:["images/hillii dragon.jpeg","images/veitchii wild.jpeg"]} },
+  { id:"24-094", name:"深綠龍*野銀 孢子苗lot 002", en:{ name:"hillii dragon* veitchii wild sporeling lot 002" }, type:"孢子苗", traits:["葉型：深綠龍強勢","尺寸：6寸方盆","特徵：大波浪"], price:1200, color:"#6b7c52", photo:"images/HGVW-2.jpeg", photos:[], sold:true, reference:{photos:["images/hillii dragon.jpeg","images/veitchii wild.jpeg"]}},
+  { id:"24-095", name:"深綠龍*野銀 孢子苗lot 003", en:{ name:"hillii dragon* veitchii wild sporeling lot 003" }, type:"孢子苗", traits:["葉型：高機率雜交","尺寸：6寸方盆","特徵：葉面絨毛厚滾白邊，葉尾尖"], price:1200, color:"#354a2b", photo:"images/HGVW-3.jpeg", photos:[], sold:true, reference:{photos:["images/hillii dragon.jpeg","images/veitchii wild.jpeg"]}  },
+  { id:"24-096", name:"深綠龍*野銀 孢子苗lot 004", en:{ name:"hillii dragon* veitchii wild sporeling lot 004" }, type:"孢子苗", traits:["葉型：高機率雜交","尺寸：6寸方盆","特徵：滾白邊，肌肉紋路"], price:1200, color:"#4a5e3a", photo:"images/HGVW-4.jpeg", photos:[], sold:true, reference:{photos:["images/hillii dragon.jpeg","images/veitchii wild.jpeg"]}  },
+  { id:"24-123", name:"深綠龍*野銀 孢子苗lot 005", en:{ name:"hillii dragon* veitchii wild sporeling lot 005" }, type:"孢子苗", traits:["葉型：深綠龍強勢","尺寸：6寸方盆","特徵：渾圓大葉子，肌肉紋路，波浪邊緣"], price:1500, color:"#3f5232", photo:"images/HGVW-5.jpeg", photos:[], sold:false, reference:{photos:["images/hillii dragon.jpeg","images/veitchii wild.jpeg"]} },
+  { id:"24-124", name:"深綠龍*野銀 孢子苗lot 006", en:{ name:"hillii dragon* veitchii wild sporeling lot 006" }, type:"孢子苗", traits:["葉型：高機率雜交","尺寸：6寸方盆","特徵：肌肉紋路，深綠色，葉尾尖"], price:1200, color:"#6b7c52", photo:"images/HGVW-6.jpeg", photos:[], sold:true, reference:{photos:["images/hillii dragon.jpeg","images/veitchii wild.jpeg"]}},
+  { id:"24-125", name:"深綠龍*野銀 孢子苗lot 007", en:{ name:"hillii dragon* veitchii wild sporeling lot 007" }, type:"孢子苗", traits:["葉型：高機率雜交","尺寸：6寸方盆","特徵：滾白邊，肌肉紋路，臉已出刺"], price:1200, color:"#354a2b", photo:"images/HGVW-7.jpeg", photos:[], sold:false, reference:{photos:["images/hillii dragon.jpeg","images/veitchii wild.jpeg"]}  },
+  { id:"24-126", name:"深綠龍*野銀 孢子苗lot 008", en:{ name:"hillii dragon* veitchii wild sporeling lot 008" }, type:"孢子苗", traits:["葉型：野銀強勢","尺寸：6寸方盆","特徵：滾白邊，細葉，臉已出刺"], price:1200, color:"#4a5e3a", photo:"images/HGVW-8.jpeg", photos:[], sold:false, reference:{photos:["images/hillii dragon.jpeg","images/veitchii wild.jpeg"]}  }, 
+  { id:"24-127", name:"深綠龍*野銀 孢子苗lot 009", en:{ name:"hillii dragon* veitchii wild sporeling lot 009" }, type:"孢子苗", traits:["葉型：高機率雜交","尺寸：6寸方盆","特徵：滾白邊，扭曲葉，臉已出刺"], price:1200, color:"#4a5e3a", photo:"images/HGVW-9.jpeg", photos:[], sold:false, reference:{photos:["images/hillii dragon.jpeg","images/veitchii wild.jpeg"]}  }, 
+  { id:"24-097", name:"veitchii HFG 孢子苗 lot 001", en:{ name:"veitchii HFG sporeling lot 001" }, type:"孢子苗", traits:["葉型：高尖冠小個體","尺寸：2.5寸盆","特徵：分岔早，有潛力"], price:800, color:"#576b44", photo:"images/24-097.jpeg", photos:[], sold:false, reference:null },
+  { id:"24-098", name:"veitchii HFG 孢子苗 lot 002", en:{ name:"veitchii HFG sporeling lot 002" }, type:"孢子苗", traits:["葉型：高尖冠小個體","尺寸：2.5寸盆","特徵：分岔早，有潛力"], price:800, color:"#495c39", photo:"images/24-098.jpeg", photos:[], sold:true, reference:null },
+  { id:"24-099", name:"veitchii HFG 孢子苗 lot 005", en:{ name:"veitchii HFG sporeling lot 005" }, type:"孢子苗", traits:["葉型：高尖冠小個體","尺寸：14X22CM","特徵：分岔早，有潛力，已經有刺臉"], price:1200, color:"#495c39", photo:"images/WZTHFG-1.jpeg", photos:[], sold:false, reference:null },
+  { id:"24-100", name:"veitchii HFG 孢子苗 lot 006", en:{ name:"veitchii HFG sporeling lot 006" }, type:"孢子苗", traits:["葉型：高尖冠小個體","尺寸：14X22CM","特徵：分岔早，有潛力，已經有刺臉"], price:1200, color:"#495c39", photo:"images/WZTHFG-2.jpeg", photos:[], sold:false, reference:null }, 
+  { id:"24-101", name:"Griffin 孢子苗 lot 001", en:{ name:"Griffin sporeling lot 001" }, type:"孢子苗", traits:["葉型：寬白對稱，大個體","尺寸：2.5寸盆","特徵：不規則邊"], price:350, color:"#576b44", photo:"images/GF-1.jpeg", photos:[], sold:false, reference:null },
+  { id:"24-102", name:"Griffin 孢子苗 lot 002", en:{ name:"Griffin sporeling lot 002" }, type:"孢子苗", traits:["葉型：寬白對稱，大個體","尺寸：2.5寸盆","特徵：立體脈紋"], price:350, color:"#495c39", photo:"images/GF-2.jpeg", photos:[], sold:false, reference:null },
+  { id:"24-103", name:"Griffin 孢子苗 lot 003", en:{ name:"Griffin sporeling lot 003" }, type:"孢子苗", traits:["葉型：寬白對稱，大個體","尺寸：2.5寸盆","特徵：白脈加立體脈紋"], price:350, color:"#495c39", photo:"images/GF-3.jpeg", photos:[], sold:false, reference:null },
+  { id:"24-104", name:"Griffin 孢子苗 lot 004", en:{ name:"Griffin sporeling lot 004" }, type:"孢子苗", traits:["葉型：寬白對稱，大個體","尺寸：2.5寸盆","特徵：分岔早，多芽"], price:350, color:"#495c39", photo:"images/GF-4.jpeg", photos:[], sold:false, reference:null },
+  { id:"24-105", name:"willinckii OMG 孢子苗 lot 001", en:{ name:"willinckii OMG sporeling lot 001" }, type:"孢子苗", traits:["葉型：6大侏儒之一","尺寸：14X22CM","特徵：可愛短手"], price:800, color:"#495c39", photo:"images/OMG-1.jpeg", photos:[], sold:false, reference:null },
+  { id:"24-106", name:"willinckii OMG 孢子苗 lot 002", en:{ name:"willinckii OMG sporeling lot 002" }, type:"孢子苗", traits:["葉型：6大侏儒之一","尺寸：14X22CM","特徵：可愛短手"], price:800, color:"#495c39", photo:"images/OMG-2.jpeg", photos:[], sold:false, reference:null },
+  { id:"24-107", name:"willinckii OMG 孢子苗 lot 003", en:{ name:"willinckii OMG sporeling lot 003" }, type:"孢子苗", traits:["葉型：6大侏儒之一","尺寸：14X22CM","特徵：可愛短手"], price:800, color:"#495c39", photo:"images/OMG-3.jpeg", photos:[], sold:false, reference:null },
+  { id:"24-108", name:"willinckii moonlight* veitchii HFG 孢子苗 lot 001", en:{ name:"willinckii moonlight* veitchii HFG sporeling lot 001" }, type:"孢子苗", traits:["葉型：尖刺冠分叉手","尺寸：6寸方盆","特徵：分岔早，高尖冠"], price:1200, color:"#495c39", photo:"images/WMHFG-1.jpeg", photos:[], sold:false, reference:{photos:["images/RPNMP01-1.jpeg","images/RPNMP01-2.jpeg","images/RPNMP01-3.jpeg"]} },
+  { id:"24-109", name:"willinckii moonlight* veitchii HFG 孢子苗 lot 002", en:{ name:"willinckii moonlight* veitchii HFG sporeling lot 002" }, type:"孢子苗", traits:["葉型：尖刺冠分叉手","尺寸：21X33CM","特徵：分岔早，高尖冠"], price:1200, color:"#495c39", photo:"images/WMHFG-2.jpeg", photos:[], sold:false, reference:{photos:["images/RPNMP01-1.jpeg","images/RPNMP01-2.jpeg","images/RPNMP01-3.jpeg"]} },
+  { id:"24-110", name:"Lecanopteris mirabilis 飛碟蟻蕨 ", en:{ name:"Lecanopteris mirabilis (飛碟蟻蕨)" }, type:"TC", traits:["盤子形狀的走莖","尺寸：2.5寸盆","特徵：走莖有如史萊姆蔓延，建議室內冷房養"], price:1400, color:"#495c39", photo:"images/LM-1.jpeg", photos:[], sold:false, reference:{photos:["images/Lecanopteris mirabilis-1.jpeg","images/Lecanopteris mirabilis-2.jpeg"]} },
+  { id:"24-111", name:"willinckii bogor sudden* Ginka* veitchii HFG 孢子苗", en:{ name:"willinckii bogor sudden* Ginka* veitchii HFG sporeling" }, type:"孢子苗", traits:["葉型：尖刺冠分叉手","尺寸：14X22CM","特徵：看起來像純HFG"], price:1200, color:"#495c39", photo:"images/BGH-1.jpeg", photos:[], sold:false, reference:null },
+  { id:"24-112", name:"willinckii moonlight* anapat #1 孢子苗", en:{ name:"willinckii moonlight* anapat #1 sporeling" }, type:"孢子苗", traits:["葉型：分岔在末端的爪哇","尺寸：21X33CM","特徵：葉柄長，末端才分岔"], price:960, color:"#495c39", photo:"images/JE-1.jpeg", photos:[], sold:false, reference:null },
+  { id:"24-113", name:"willinckii Pearl Queen* Zero 孢子苗", en:{ name:"willinckii Pearl Queen* Zero sporeling" }, type:"孢子苗", traits:["葉型：白爪哇特有的鼻涕手","尺寸：21X33CM","特徵：之後應該是很白的個體"], price:960, color:"#495c39", photo:"images/JE-2.jpeg", photos:[], sold:false, reference:{photos:null} },
+  { id:"24-114", name:"Awaves 30 孢子苗", en:{ name:"Awaves 30 sporeling" }, type:"孢子苗", traits:["葉型：多品混播未知","尺寸：21X33CM","特徵：對稱大分岔爪哇型態，十分優美"], price:840, color:"#495c39", photo:"images/JE-3.jpeg", photos:[], sold:false, reference:{photos:null} },
+  { id:"24-115", name:"willinckii little crown sp* anapat #1 孢子苗", en:{ name:"willinckii little crown sp* anapat #1 sporeling" }, type:"孢子苗", traits:["葉型：小個體爪哇雜交","尺寸：21X33CM","特徵：對稱大分岔，葉子微寬硬挺，十分優美"], price:1080, color:"#495c39", photo:"images/JE-4.jpeg", photos:[], sold:false, reference:{photos:null} },
+  { id:"24-116", name:"Lecanopteris mirabilis 飛碟蟻蕨 ", en:{ name:"Lecanopteris mirabilis (飛碟蟻蕨)" }, type:"TC", traits:["盤子形狀的走莖","尺寸：2.5寸盆","特徵：走莖有如史萊姆蔓延，建議室內冷房養"], price:1400, color:"#495c39", photo:"images/LM-2.jpeg", photos:[], sold:false, reference:{photos:["images/Lecanopteris mirabilis-1.jpeg","images/Lecanopteris mirabilis-2.jpeg"]} },
+  { id:"24-117", name:"Lecanopteris mirabilis 飛碟蟻蕨 ", en:{ name:"Lecanopteris mirabilis (飛碟蟻蕨)" }, type:"TC", traits:["盤子形狀的走莖","尺寸：2.5寸盆","特徵：走莖有如史萊姆蔓延，建議室內冷房養"], price:1400, color:"#495c39", photo:"images/LM-3.jpeg", photos:[], sold:false, reference:{photos:["images/Lecanopteris mirabilis-1.jpeg","images/Lecanopteris mirabilis-2.jpeg"]} },
+  { id:"24-118", name:"Lecanopteris mirabilis 飛碟蟻蕨 ", en:{ name:"Lecanopteris mirabilis (飛碟蟻蕨)" }, type:"TC", traits:["盤子形狀的走莖","尺寸：2.5寸盆","特徵：走莖有如史萊姆蔓延，建議室內冷房養"], price:1400, color:"#495c39", photo:"images/LM-4.jpeg", photos:[], sold:false, reference:{photos:["images/Lecanopteris mirabilis-1.jpeg","images/Lecanopteris mirabilis-2.jpeg"]} },
+  { id:"24-119", name:"hillii Mangkhud 山竹 ", en:{ name:"hillii Mangkhud (山竹)" }, type:"pup", traits:["美麗手指的深綠","尺寸：6寸方盆","特徵：手指很美麗，寬大且波浪狀孢子葉"], price:900, color:"#495c39", photo:"images/MK-1.jpeg", photos:[], sold:false, reference:{photos:["images/mangkhud-1.jpeg","images/mangkhud-2.jpeg", "images/mangkhud-3.jpeg"]} },
+  { id:"24-120", name:"hillii Mangkhud 山竹 ", en:{ name:"hillii Mangkhud (山竹)" }, type:"pup", traits:["美麗手指的深綠","尺寸：6寸方盆","特徵：手指很美麗，寬大且波浪狀孢子葉"], price:900, color:"#495c39", photo:"images/MK-2.jpeg", photos:[], sold:false, reference:{photos:["images/mangkhud-1.jpeg","images/mangkhud-2.jpeg", "images/mangkhud-3.jpeg"]} },
+  { id:"24-121", name:"hillii Mangkhud 山竹 ", en:{ name:"hillii Mangkhud (山竹)" }, type:"pup", traits:["美麗手指的深綠","尺寸：6寸方盆","特徵：手指很美麗，寬大且波浪狀孢子葉"], price:900, color:"#495c39", photo:"images/MK-3.jpeg", photos:[], sold:false, reference:{photos:["images/mangkhud-1.jpeg","images/mangkhud-2.jpeg", "images/mangkhud-3.jpeg"]} },
+  { id:"24-122", name:"「播孢必備」便攜顯微鏡 ", en:{ name:"Portable Microscope for Spore Sowing" }, type:"器材", traits:["可以觀察孢子","規格：60~120X","功能：觀察刮下來的孢子的狀態，評估要不要播孢，避免浪費材料浪費時間，也可以當作其他微觀工具(無相機功能)"], price:320, color:"#495c39", photo:"images/microscope-1.jpeg", photos:[], sold:false, reference:{photos:["images/MSP-1.jpeg","images/MSP-2.jpeg", "images/MSP-3.jpeg"]} },
+  
+
+];
+
+// ---- 依目前語言顯示（有 en 就用英文，沒有就顯示中文原文）----
+const curLang = () => (window.I18N ? I18N.lang : "zh");
+const t_ = (k, zh) => (window.I18N ? I18N.t(k, zh) : zh);
+function tx(p, f){ const o = p[curLang()]; return (o && o[f]) || p[f]; }
+const TYPES = { en:{ "側芽":"Pup", "孢子苗":"Sporeling", "TC":"TC", "pup":"Pup", "器材":"Equipment" } };
+function typeLabel(ty){ const m = TYPES[curLang()]; return (m && m[ty]) || ty; }
+// 特徵的英文對照：以中文整句當 key，新增商品時有用到新的句子，就在這裡補一行英文，沒補就顯示中文
+const TRAITS = { en: {
+  "葉型：尖刺冠且孢子葉分岔性極佳": "Form: spiky crest, with excellent branching in the fertile fronds",
+  "尺寸：6寸方盆": "Size: 6-inch square pot",
+  "特徵：左右對稱且氣場十足": "Features: symmetrical left and right, with commanding presence",
+  "特徵：高尖冠分岔手": "Features: tall pointed crest and branching fingers",
+  "葉型：高機率雜交": "Form: likely a hybrid",
+  "特徵：孢子面銀白偏多，尖葉分叉": "Features: mostly silvery-white spore surface, pointed branching fronds",
+  "葉型：深綠龍強勢": "Form: hillii dragon traits dominant",
+  "特徵：大波浪": "Features: big waves",
+  "特徵：葉面絨毛厚滾白邊，葉尾尖": "Features: thick fuzz on the frond surface, white edges, pointed tips",
+  "特徵：滾白邊，肌肉紋路": "Features: white edges, muscle-like ridges",
+  "特徵：渾圓大葉子，肌肉紋路，波浪邊緣": "Features: big round fronds, muscle-like ridges, wavy edges",
+  "特徵：肌肉紋路，深綠色，葉尾尖": "Features: muscle-like ridges, deep green, pointed tips",
+  "特徵：滾白邊，肌肉紋路，臉已出刺": "Features: white edges, muscle-like ridges, spikes already showing on the face",
+  "葉型：野銀強勢": "Form: wild veitchii traits dominant",
+  "特徵：滾白邊，細葉，臉已出刺": "Features: white edges, slender fronds, spikes already showing on the face",
+  "特徵：滾白邊，扭曲葉，臉已出刺": "Features: white edges, twisted fronds, spikes already showing on the face",
+  "葉型：高尖冠小個體": "Form: small plant with a tall pointed crest",
+  "尺寸：2.5寸盆": "Size: 2.5-inch pot",
+  "特徵：分岔早，有潛力": "Features: early branching, with good potential",
+  "尺寸：14X22CM": "Size: 14X22CM",
+  "特徵：分岔早，有潛力，已經有刺臉": "Features: early branching, good potential, spikes already showing on the face",
+  "葉型：寬白對稱，大個體": "Form: broad, white and symmetrical; large plant",
+  "特徵：不規則邊": "Features: irregular edges",
+  "特徵：立體脈紋": "Features: raised veining",
+  "特徵：白脈加立體脈紋": "Features: white veins plus raised veining",
+  "特徵：分岔早，多芽": "Features: early branching, multiple growing points",
+  "葉型：6大侏儒之一": "Form: one of the six famous dwarfs",
+  "特徵：可愛短手": "Features: cute short fingers",
+  "葉型：尖刺冠分叉手": "Form: spiky crest with branching fingers",
+  "特徵：分岔早，高尖冠": "Features: early branching, tall pointed crest",
+  "尺寸：21X33CM": "Size: 21X33CM",
+  "盤子形狀的走莖": "Plate-shaped rhizome",
+  "特徵：走莖有如史萊姆蔓延，建議室內冷房養": "Features: rhizomes spread like slime; best grown indoors in a cool room",
+  "特徵：看起來像純HFG": "Features: looks like pure HFG",
+  "葉型：分岔在末端的爪哇": "Form: Java type that branches at the tips",
+  "特徵：葉柄長，末端才分岔": "Features: long stalk, branching only at the tips",
+  "葉型：白爪哇特有的鼻涕手": "Form: the “snot-like” fingers typical of white Java",
+  "特徵：之後應該是很白的個體": "Features: should turn into a very white plant later",
+  "葉型：多品混播未知": "Form: mixed sowing of several varieties, parentage unknown",
+  "特徵：對稱大分岔爪哇型態，十分優美": "Features: symmetrical, large branching Java form; very elegant",
+  "葉型：小個體爪哇雜交": "Form: small Java-type hybrid",
+  "特徵：對稱大分岔，葉子微寬硬挺，十分優美": "Features: symmetrical, large branching; slightly broad, stiff fronds; very elegant",
+  "美麗手指的深綠": "Dark green with beautiful fingers",
+  "特徵：手指很美麗，寬大且波浪狀孢子葉": "Features: beautiful fingers, with broad, wavy fertile fronds",
+  "可以觀察孢子": "Lets you observe spores",
+  "規格：60~120X": "Spec: 60–120X",
+  "功能：觀察刮下來的孢子的狀態，評估要不要播孢，避免浪費材料浪費時間，也可以當作其他微觀工具(無相機功能)": "Function: check the condition of scraped-off spores to decide whether to sow them, avoiding wasted materials and time; also usable as a general micro-inspection tool (no camera function)"
+} };
+function traitsOf(p){
+  const o = p[curLang()]; if (o && o.traits) return o.traits;
+  const m = TRAITS[curLang()]; return p.traits.map(x => (m && m[x]) || x);
+}
+
+function productMedia(p){
+  const photos = (p.photos && p.photos.length) ? p.photos : (p.photo ? [p.photo] : []);
+  if(photos.length === 0) return frondSVG(p.color);
+  const idx = galleryIndex[p.id] || 0;
+  const nav = photos.length > 1 ? `
+    <div class="nav prev" data-nav="prev" data-id="${p.id}">‹</div>
+    <div class="nav next" data-nav="next" data-id="${p.id}">›</div>
+    <div class="dots">${photos.map((_,i)=>`<span class="${i===idx?'active':''}"></span>`).join('')}</div>
+  ` : '';
+  return `<img src="${photos[idx]}" alt="${tx(p,'name')}" loading="lazy">${nav}`;
+}
+
+const grid = document.getElementById('grid');
+let cart = {};
+let galleryIndex = {};
+const lightbox = initLightbox();
+
+function render(){
+  grid.innerHTML = plants.map(p => `
+    <div class="card ${p.sold ? 'sold' : ''}">
+      ${p.sold ? `<div class="sold-badge">${t_('shop.reserved','已預訂')}</div>` : ''}
+      <div class="accession">NO. ${p.id}</div>
+      <div class="frond">${productMedia(p)}</div>
+      <div class="body">
+        <h3>${tx(p,'name')}${p.type ? `<span class="type-tag">${typeLabel(p.type)}</span>` : ''}</h3>
+        ${p.reference ? `<button class="ref-tag" data-ref-id="${p.id}">
+          ${p.reference.photos && p.reference.photos.length ? `<img src="${p.reference.photos[0]}" alt="">` : ''}
+          ${p.reference.label || t_('shop.ref','參考資料')} →
+        </button>` : ''}
+        <div class="traits">${traitsOf(p).map(t=>`<span>${t}</span>`).join('')}</div>
+        <div class="footer-row">
+          <span class="price">${p.price.toLocaleString()}</span>
+          <button class="stamp-btn ${cart[p.id] ? 'added':''}" data-id="${p.id}" ${p.sold?'disabled':''}>
+            ${cart[p.id] ? t_('shop.added','已加入 ✓') : t_('shop.add','加入清單')}
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  grid.querySelectorAll('.stamp-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const id = btn.dataset.id;
+      const plant = plants.find(p=>p.id===id);
+      if(cart[id]) delete cart[id]; else cart[id] = plant;
+      render();
+      renderDrawer();
+    });
+  });
+
+  grid.querySelectorAll('[data-nav]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const id = btn.dataset.id;
+      const p = plants.find(pl=>pl.id===id);
+      const photos = (p.photos && p.photos.length) ? p.photos : (p.photo ? [p.photo] : []);
+      const len = photos.length;
+      const cur = galleryIndex[id] || 0;
+      galleryIndex[id] = btn.dataset.nav === 'next' ? (cur+1)%len : (cur-1+len)%len;
+      render();
+    });
+  });
+
+  grid.querySelectorAll('[data-ref-id]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const p = plants.find(pl=>pl.id===btn.dataset.refId);
+      lightbox.open({ name: p.reference.name || p.reference.label || t_('shop.ref','參考資料'), photos: p.reference.photos, note: p.reference.note });
+    });
+  });
+}
+
+const drawerList = document.getElementById('drawerList');
+const fabCount = document.getElementById('fabCount');
+const subtotalEl = document.getElementById('subtotal');
+
+function renderDrawer(){
+  const items = Object.values(cart);
+  fabCount.textContent = items.length;
+
+  if(items.length === 0){
+    drawerList.innerHTML = `<div class="empty-note">${t_('shop.empty','清單是空的。<br>喜歡哪一株就先加進來，不急著結帳。')}</div>`;
+  } else {
+    drawerList.innerHTML = items.map(p => `
+      <div class="drawer-item">
+        <div>
+          <span class="acc">NO. ${p.id}</span>
+          <span class="name">${tx(p,'name')}</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span class="p">NT$ ${p.price.toLocaleString()}</span>
+          <button data-id="${p.id}" title="${t_('shop.remove','移除')}">✕</button>
+        </div>
+      </div>
+    `).join('');
+    drawerList.querySelectorAll('button[data-id]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        delete cart[btn.dataset.id];
+        render();
+        renderDrawer();
+      });
+    });
+  }
+
+  const total = items.reduce((s,p)=>s+p.price,0);
+  subtotalEl.textContent = `NT$ ${total.toLocaleString()}`;
+}
+
+const overlay = document.getElementById('overlay');
+const drawer = document.getElementById('drawer');
+document.getElementById('fabBtn').addEventListener('click', ()=>{
+  overlay.classList.add('open');
+  drawer.classList.add('open');
+});
+document.getElementById('closeBtn').addEventListener('click', closeDrawer);
+overlay.addEventListener('click', closeDrawer);
+function closeDrawer(){
+  overlay.classList.remove('open');
+  drawer.classList.remove('open');
+}
+
+const toast = document.getElementById('toast');
+document.getElementById('copyBtn').addEventListener('click', ()=>{
+  const items = Object.values(cart);
+  if(items.length === 0) return;
+  const lines = items.map(p => `NO.${p.id}　${p.name}　NT$${p.price.toLocaleString()}`);
+  const total = items.reduce((s,p)=>s+p.price,0);
+  const text = `【鹿角蕨採集清單】\n${lines.join('\n')}\n----------\n共 ${items.length} 株　小計 NT$${total.toLocaleString()}\n\n(從網站複製，麻煩確認庫存與付款方式，謝謝！)`;
+  navigator.clipboard.writeText(text).then(()=>{
+    toast.classList.add('show');
+    setTimeout(()=>toast.classList.remove('show'), 2600);
+  });
+});
+
+render();
+renderDrawer();
+document.addEventListener('langchange', ()=>{ render(); renderDrawer(); });
+</script>
+
+</body>
+</html>
