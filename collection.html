@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" data-i18n-title="collection.title" data-i18n-desc="collection.desc">
 <head>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5K2PCSPEG"></script>
@@ -20,49 +20,53 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>園區收藏｜植播電台 Zhibodiantai</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/lang.css">
 <link rel="icon" href="images/wow-forest-logo.jpeg">
 </head>
 <body>
 
 <nav class="site-nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-brand"><img src="images/wow-forest-logo.jpeg" alt="植播電台 Zhibodiantai 品牌 logo">植播電台<span class="brand-sub">Zhibodiantai</span></a>
+    <a href="index.html" class="nav-brand"><img src="images/wow-forest-logo.jpeg" alt="植播電台 Zhibodiantai 品牌 logo" data-i18n-attr="alt:alt.brand">植播電台<span class="brand-sub">Zhibodiantai</span></a>
     <div class="nav-links">
-      <a href="index.html">關於我</a>
-      <a href="collection.html" class="active">園區收藏</a>
-      <a href="shop.html">販售目錄</a>
-      <a href="guest.html">客座夥伴</a>
-      <a href="care.html">栽培知識</a>
-      <a href="blog.html">文章</a>
-      <a href="contact.html">聯絡資訊</a>
+      <a href="index.html" data-i18n="nav.about">關於我</a>
+      <a href="collection.html" class="active" data-i18n="nav.collection">園區收藏</a>
+      <a href="shop.html" data-i18n="nav.shop">販售目錄</a>
+      <a href="guest.html" data-i18n="nav.guest">客座夥伴</a>
+      <a href="care.html" data-i18n="nav.care">栽培知識</a>
+      <a href="blog.html" data-i18n="nav.blog">文章</a>
+      <a href="contact.html" data-i18n="nav.contact">聯絡資訊</a>
     </div>
-    <button id="navToggle" class="nav-toggle" aria-label="開啟選單">☰</button>
+    <div class="lang" id="langSwitch" role="group" aria-label="Language"></div>
+    <button id="navToggle" class="nav-toggle" aria-label="開啟選單" data-i18n-attr="aria-label:nav.menu">☰</button>
   </div>
 </nav>
 
 <div class="wrap">
   <header class="page-head">
     <div class="eyebrow">Mother Plants & Notable Specimens</div>
-    <h1>園區收藏</h1>
-    <p class="sub">這裡展示的母本與表現優秀的個體皆為非賣品，購買請參考販售目錄。</p>
+    <h1 data-i18n="collection.h1">園區收藏</h1>
+    <p class="sub" data-i18n="collection.sub">這裡展示的母本與表現優秀的個體皆為非賣品，購買請參考販售目錄。</p>
   </header>
 
   <div class="grid" id="grid"></div>
 </div>
 
-<footer class="site-footer">© 植播電台 Zhibodiantai · 個人栽培紀錄與販售</footer>
+<footer class="site-footer" data-i18n="footer">© 植播電台 Zhibodiantai · 個人栽培紀錄與販售</footer>
 
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal-box">
     <div class="modal-head">
       <h3 id="modalTitle"></h3>
-      <button id="modalClose">關閉 ✕</button>
+      <button id="modalClose" data-i18n="modal.close">關閉 ✕</button>
     </div>
     <div class="modal-photos" id="modalPhotos"></div>
     <div class="modal-note" id="modalNote"></div>
   </div>
 </div>
 
+<script src="js/site-translations.js"></script>
+<script src="js/site-i18n.js"></script>
 <script src="js/common.js"></script>
 <script>
 // ------------------------------------------------------------------
@@ -70,6 +74,7 @@
 // - label：分類標籤，例如 "母本"、"重點收藏"、"型態參考"，會顯示成小標籤
 // - photos：可放多張照片，例如 ["images/mother-m1-1.jpg","images/mother-m1-2.jpg"]
 // - note：介紹文字，可以寫來源、型態特徵、為什麼留種等
+// - en：英文版 { name:"…", note:"…" }，沒填的欄位會顯示中文原文；之後要加日文就再加一個 ja:{ … }
 // ------------------------------------------------------------------
 const collection = [
   {
@@ -78,7 +83,8 @@ const collection = [
     label:"母本",
     color:"#4c5f3d",
     photos:[ "images/RPNMP01-1.jpeg", "images/RPNMP01-2.jpeg", "images/RPNMP01-3.jpeg" ],
-    note:"willinckii moonlight與veitchii HFG雜交個體，雙親表現非常平衡，高尖冠加上多重分岔手，生長速度快，環境耐受強，是適合栽培的品種"
+    note:"willinckii moonlight與veitchii HFG雜交個體，雙親表現非常平衡，高尖冠加上多重分岔手，生長速度快，環境耐受強，是適合栽培的品種",
+    en:{ name:"Gold Experience Requiem (黃金鎮魂曲)", note:"A hybrid of willinckii 'moonlight' and veitchii HFG. Both parents show up in a very balanced way: a tall pointed crest with multiple branching fingers. It grows fast and tolerates a wide range of conditions, making it an easy variety to cultivate." }
   },
   {
     id:"M-02",
@@ -86,7 +92,8 @@ const collection = [
     label:"母本",
     color:"#5a6e46",
     photos:["images/HGVW-1.jpg", "images/HGVW-2.jpg"],
-    note:"園藝種深綠“龍”與野銀的雜交種，非常少見，有尖刺冠及寬手特徵，目前為亞成型態"
+    note:"園藝種深綠“龍”與野銀的雜交種，非常少見，有尖刺冠及寬手特徵，目前為亞成型態",
+    en:{ name:"HGVW01 (hillii dragon* veitchii wild sporeling)", note:"A cross between the cultivated dark-green hillii 'dragon' and wild veitchii. Very rare, with a spiky crest and broad fingers; currently at the sub-adult stage." }
   },
   {
     id:"M-03",
@@ -94,7 +101,8 @@ const collection = [
     label:"母本",
     color:"#3f5232",
     photos:[ "images/Daedala-1.jpeg" ],
-    note:"（alcicrone ver madagascar variant sporeling, 來自Nook的孢子苗，具有捲曲特徵，孢子葉非常寬大，手指數量也很驚人，宛如精緻的工藝品"
+    note:"（alcicrone ver madagascar variant sporeling, 來自Nook的孢子苗，具有捲曲特徵，孢子葉非常寬大，手指數量也很驚人，宛如精緻的工藝品",
+    en:{ name:"Daedala (迪達拉)", note:"An alcicrone ver madagascar variant sporeling from Nook, with curled traits, very broad fertile fronds and an astonishing number of fingers, like a fine piece of craftsmanship." }
   },
   {
     id:"M-04",
@@ -102,7 +110,8 @@ const collection = [
     label:"母本",
     color:"#6b7c52",
     photos:[ "images/Kakuzu-1.jpeg", "images/Kakuzu-2.jpeg" ],
-    note:"SSFOONG*bf sp white* hillii Mio* Silver Vevlet sporeling，4品混播，有巨大葉片，黑脈紋路，有鱗片狀的表面，短冠的營養葉"
+    note:"SSFOONG*bf sp white* hillii Mio* Silver Vevlet sporeling，4品混播，有巨大葉片，黑脈紋路，有鱗片狀的表面，短冠的營養葉",
+    en:{ name:"Kakuzu (角都)", note:"SSFOONG*bf sp white* hillii Mio* Silver Vevlet sporeling, a mix sown from four varieties. Huge fronds with dark veining, a scale-like surface texture and short-crested shield fronds." }
   },
   {
     id:"M-05",
@@ -110,7 +119,8 @@ const collection = [
     label:"母本",
     color:"#6b7c52",
     photos:[ "images/mangkhud-1.jpeg", "images/mangkhud-2.jpeg", "images/mangkhud-3.jpeg" ],
-    note:"來自大叔的深綠,寬葉且手指波浪型態，整體十分巨大。"
+    note:"來自大叔的深綠,寬葉且手指波浪型態，整體十分巨大。",
+    en:{ name:"hillii Mangkhud (山竹)", note:"A dark-green hillii from 大叔 ('Uncle'), with broad fronds, wavy fingers and a very large overall size." }
   },
   {
     id:"M-06",
@@ -118,7 +128,8 @@ const collection = [
     label:"母本",
     color:"#6b7c52",
     photos:[ "images/bjh-1.jpeg", "images/bjh-2.jpeg", "images/bjh-3.jpeg", "images/bjh-4.jpeg", "images/bjh-5.jpeg" ],
-    note:"特殊型態鹿角蕨，孢子葉皺皺的，新葉帶有明顯的斑紋，極具辨識度的個體。"
+    note:"特殊型態鹿角蕨，孢子葉皺皺的，新葉帶有明顯的斑紋，極具辨識度的個體。",
+    en:{ note:"An unusual staghorn fern with wrinkled fertile fronds and distinct mottling on the new fronds, a highly recognizable individual." }
   },
   {
     id:"M-07",
@@ -126,9 +137,16 @@ const collection = [
     label:"母本",
     color:"#6b7c52",
     photos:[ "images/Lecanopteris mirabilis-1.jpeg", "images/Lecanopteris mirabilis-2.jpeg" ],
-    note:"蟻蕨家族裡最奇怪的外觀，扁平有如飛碟一般來的肉質莖，建議冷房生長，耐熱性不佳，種植不可以積水。"
+    note:"蟻蕨家族裡最奇怪的外觀，扁平有如飛碟一般來的肉質莖，建議冷房生長，耐熱性不佳，種植不可以積水。",
+    en:{ name:"Lecanopteris mirabilis (飛碟蟻蕨)", note:"The oddest-looking member of the ant fern family, with a flat, fleshy rhizome shaped like a flying saucer. Best grown in a cool environment; it has poor heat tolerance and must never sit in standing water." }
   },
 ];
+
+// 依目前語言取欄位：有對應語言（en / ja）就用，沒有就用中文原文
+const LABELS = { en:{ "母本":"Mother plant", "重點收藏":"Featured specimen", "型態參考":"Form reference" } };
+const curLang = () => (window.I18N ? I18N.lang : "zh");
+function tx(item, f){ const o = item[curLang()]; return (o && o[f]) || item[f]; }
+function lab(l){ const m = LABELS[curLang()]; return (m && m[l]) || l; }
 
 function galleryHTML(item, idx){
   const photos = item.photos && item.photos.length ? item.photos : [];
@@ -138,7 +156,7 @@ function galleryHTML(item, idx){
     <div class="nav next" data-nav="next" data-id="${item.id}">›</div>
     <div class="dots">${photos.map((_,i)=>`<span class="${i===idx?'active':''}"></span>`).join('')}</div>
   ` : '';
-  return `<img src="${photos[idx]}" alt="${item.name}" loading="lazy">${nav}`;
+  return `<img src="${photos[idx]}" alt="${tx(item,'name')}" loading="lazy">${nav}`;
 }
 
 let galleryIndex = {};
@@ -151,8 +169,8 @@ function render(){
       <div class="accession">NO. ${item.id}</div>
       <div class="frond">${galleryHTML(item, galleryIndex[item.id] || 0)}</div>
       <div class="body">
-        <h3>${item.name}${item.label ? `<span class="type-tag">${item.label}</span>` : ''}</h3>
-        <div class="collection-note" style="padding:0;flex:1;">${item.note || ''}</div>
+        <h3>${tx(item,'name')}${item.label ? `<span class="type-tag">${lab(item.label)}</span>` : ''}</h3>
+        <div class="collection-note" style="padding:0;flex:1;">${tx(item,'note') || ''}</div>
       </div>
     </div>
   `).join('');
@@ -172,12 +190,14 @@ function render(){
     img.addEventListener('click', ()=>{
       const card = img.closest('.card');
       const idx = [...grid.children].indexOf(card);
-      lightbox.open(collection[idx]);
+      const it = collection[idx];
+      lightbox.open({ name: tx(it,'name'), label: lab(it.label), note: tx(it,'note'), photos: it.photos });
     });
   });
 }
 
 render();
+document.addEventListener('langchange', render);
 </script>
 
 </body>
