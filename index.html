@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" data-i18n-title="about.title" data-i18n-desc="about.desc">
 <head>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5K2PCSPEG"></script>
@@ -20,50 +20,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>關於我｜植播電台 Zhibodiantai</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/lang.css">
 <link rel="icon" href="images/wow-forest-logo.jpeg">
 </head>
 <body>
 
 <nav class="site-nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-brand"><img src="images/wow-forest-logo.jpeg" alt="植播電台 Zhibodiantai 品牌 logo">植播電台<span class="brand-sub">Zhibodiantai</span></a>
+    <a href="index.html" class="nav-brand"><img src="images/wow-forest-logo.jpeg" alt="植播電台 Zhibodiantai 品牌 logo" data-i18n-attr="alt:alt.brand">植播電台<span class="brand-sub">Zhibodiantai</span></a>
     <div class="nav-links">
-      <a href="index.html" class="active">關於我</a>
-      <a href="collection.html">園區收藏</a>
-      <a href="shop.html">販售目錄</a>
-      <a href="guest.html">客座夥伴</a>
-      <a href="care.html">栽培知識</a>
-      <a href="blog.html">文章</a>
-      <a href="contact.html">聯絡資訊</a>
+      <a href="index.html" class="active" data-i18n="nav.about">關於我</a>
+      <a href="collection.html" data-i18n="nav.collection">園區收藏</a>
+      <a href="shop.html" data-i18n="nav.shop">販售目錄</a>
+      <a href="guest.html" data-i18n="nav.guest">客座夥伴</a>
+      <a href="care.html" data-i18n="nav.care">栽培知識</a>
+      <a href="blog.html" data-i18n="nav.blog">文章</a>
+      <a href="contact.html" data-i18n="nav.contact">聯絡資訊</a>
     </div>
-    <button id="navToggle" class="nav-toggle" aria-label="開啟選單">☰</button>
+    <div class="lang" id="langSwitch" role="group" aria-label="Language"></div>
+    <button id="navToggle" class="nav-toggle" aria-label="開啟選單" data-i18n-attr="aria-label:nav.menu">☰</button>
   </div>
 </nav>
 
 <div class="wrap">
   <header class="page-head">
     <div class="eyebrow">wow forest · Zhibodiantai · About Me</div>
-    <h1>關於 沃森 / 植播電台</h1>
+    <h1 data-i18n="about.h1">關於 沃森 / 植播電台</h1>
     <p class="sub">wow forest / Zhibodiantai</p>
   </header>
 
   <div class="about-layout">
     <div class="about-photo">
-      <img src="images/wow-forest-logo.jpeg" alt="沃森 wow forest 品牌 logo：一隻背著森林的鯨魚" onerror="this.style.display='none'">
+      <img src="images/wow-forest-logo.jpeg" alt="沃森 wow forest 品牌 logo：一隻背著森林的鯨魚" data-i18n-attr="alt:alt.logo" onerror="this.style.display='none'">
     </div>
 
     <div class="about-text">
       <div class="about-block">
-        <h2>關於我</h2>
-        <p>
+        <h2 data-i18n="about.intro.h">關於我</h2>
+        <p data-i18n="about.intro.p">
           植物愛好者，專注於鹿角蕨型態及育種，販售鹿角蕨孢子苗，國內外貿易，批發零售，
           僅為了自己的喜好生產，歡迎喜歡的植友一起來交流。
         </p>
       </div>
 
       <div class="about-block">
-        <h2>兩個品牌的由來</h2>
-        <p>
+        <h2 data-i18n="about.brands.h">兩個品牌的由來</h2>
+        <p data-i18n="about.brands.p">
           植播電台是我入坑的契機，主要是分享我觀察植物的心得；沃森是我的販售品牌，
           透過我的觀察心得，累積成產品。品牌 logo 是一隻背著森林的鯨魚，
           象徵臺灣豐富的森林資源，希望從這裡出發到全世界。
@@ -71,16 +73,16 @@
       </div>
 
       <div class="about-block">
-        <h2>育種理念</h2>
-        <p>
+        <h2 data-i18n="about.breeding.h">育種理念</h2>
+        <p data-i18n="about.breeding.p">
           鹿角蕨的型態建構基礎在於基因，透過育種來觀察品種特徵的穩定性，
           以及基因重組產生的可能性，突破目前市場產品趨同性。
         </p>
       </div>
 
       <div class="about-block">
-        <h2>栽培環境</h2>
-        <p>
+        <h2 data-i18n="about.env.h">栽培環境</h2>
+        <p data-i18n="about.env.p">
           從這裡購買的植物帶回去，無需特別馴化。
           溫室位在臺灣桃園的蘆竹區大新路937巷240號對面，遮陰約 70%，全自動澆灌，
           年溫變化介於 12°C 到 41°C 之間，濕度在50~95%之間震盪，有正壓風扇但沒有冷房。
@@ -90,19 +92,21 @@
       </div>
 
       <div class="about-block">
-        <h2>客座夥伴</h2>
-        <p>
+        <h2 data-i18n="about.guest.h">客座夥伴</h2>
+        <p data-i18n="about.guest.p">
           與台灣南投的鹿角蕨玩家「植蕨生活」合作，在這裡展示夥伴自產的孢子苗與側芽，也可以預訂他經營的民宿「植蕨行旅」。
           這個專區的商品由夥伴自行結帳與出貨，不與本站商品合併結帳。
         </p>
-        <p style="margin-top:14px;"><a class="social-btn" href="guest.html">前往客座專區 →</a></p>
+        <p style="margin-top:14px;"><a class="social-btn" href="guest.html" data-i18n="about.guest.btn">前往客座專區 →</a></p>
       </div>
     </div>
   </div>
 </div>
 
-<footer class="site-footer">© 植播電台 Zhibodiantai · 個人栽培紀錄與販售</footer>
+<footer class="site-footer" data-i18n="footer">© 植播電台 Zhibodiantai · 個人栽培紀錄與販售</footer>
 
+<script src="js/site-translations.js"></script>
+<script src="js/site-i18n.js"></script>
 <script src="js/common.js"></script>
 </body>
 </html>
